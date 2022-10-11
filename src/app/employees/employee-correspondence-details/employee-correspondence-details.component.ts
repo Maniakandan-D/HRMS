@@ -24,10 +24,8 @@ class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class EmployeeCorrespondenceDetailsComponent implements OnInit {
 
-  @Output()
-  formReady = new EventEmitter<FormGroup>();
-
   matcher = new MyErrorStateMatcher();
+  
   correspondenceForm = new FormGroup({
     streetAddress : new FormControl('', [
       Validators.required
@@ -56,7 +54,6 @@ export class EmployeeCorrespondenceDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.formReady.emit(this.correspondenceForm);
   }
 
 }

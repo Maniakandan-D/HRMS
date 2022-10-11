@@ -3,10 +3,10 @@
     <mat-step [stepControl]="femployeeForm" errorMessage="General Information is required.">
       <ng-template matStepLabel>General Information</ng-template>
       <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-        <app-employee-basics-details (formReady)="addChildForm('basics', $event)"></app-employee-basics-details>
+        <app-employee-basics-details></app-employee-basics-details>
         <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
           <mat-card fxFlex.gt-xs="40">
-            <app-employee-correspondence-details (formReady)="addChildForm('correspondence', $event)"></app-employee-correspondence-details>
+            <app-employee-correspondence-details></app-employee-correspondence-details>
           </mat-card>
           <mat-card fxFlex.gt-xs="40">
             <app-employee-permanent-details></app-employee-permanent-details>

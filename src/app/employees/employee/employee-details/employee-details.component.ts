@@ -37,7 +37,4 @@ export class EmployeeDetailsComponent implements OnInit {
   onSubmit(){
    this.employeeForm.value;
   }
-  addChildForm(name: string, group: FormGroup) {
-    this.employeeForm.addControl(name, group);
-  }
 }
