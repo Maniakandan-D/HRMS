@@ -1,0 +1,11 @@
+{
+  "SignupUsers": [
+    {
+      "name": "HRMS",
+      "mobileNo": 9843775232,
+      "email": "hrms@gmail.com",
+      "password": "12345678",
+      "id": 1
+    }
+  ]
+}

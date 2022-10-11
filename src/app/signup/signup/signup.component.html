@@ -1,0 +1,39 @@
+<div class="login-page">
+    <div class="content px20">
+      <form>
+        <form [formGroup]="signupForm" (ngSubmit)="signupForm.valid && signup()" #localForm="ngForm">
+          <div class="text-center">
+            <h2 class="app-name">Quadgen Admin</h2>
+            <h6>Register</h6>
+          </div>
+          <div fxLayout="row">
+            <div fxFlexFill>
+              <mat-form-field class="w-100">
+                <input matInput type="text" formControlName="name" class="form-control" [class.is-invalid]="localForm.submitted && signupForm.get('name')?.invalid" placeholder="Name" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <input matInput type="number" formControlName="mobileNo" class="form-control" [class.is-invalid]="localForm.submitted && signupForm.get('mobileNo')?.invalid" placeholder="Mobile No" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <input matInput type="email" formControlName="email" class="form-control" [class.is-invalid]="localForm.submitted && signupForm.get('email')?.invalid" placeholder="Email" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <input matInput type="password" formControlName="password" class="form-control" [class.is-invalid]="localForm.submitted && signupForm.get('password')?.invalid" placeholder="Password" autocomplete="off" required>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs="column" class="mt20 mb20">
+            <mat-checkbox color="primary" [ngStyle.xs]="{'margin-bottom.px': 10}">Remember Me</mat-checkbox>
+            <a href="javascript:void(0)">Forgot Password</a>
+          </div>
+          <div fxLayout="row">
+            <div fxFlexFill>
+              <button type="button"  mat-raised-button color="primary" class="w-100">Sign Up</button>
+            </div>
+          </div>
+        </form>
+        <a routerLink="/login">Already register? click to Login!!</a>
+      </form>
+    </div>
+  </div>
+  

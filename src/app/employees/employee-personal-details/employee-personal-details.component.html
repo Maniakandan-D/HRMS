@@ -1,0 +1,110 @@
+<form [formGroup]="secondFormGroup" (ngSubmit)="secondFormGroup.valid && onSubmit()" #localForm>
+    <div>
+      <div>
+        <label for="name">Full Name:</label>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Initial" formControlName="initial" [class.is-invalid]="localForm.submitted && firstFormGroup.get('initial')?.invalid">
+        <mat-error class="invalid-feedback">
+          Initial is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('firstName')?.invalid">
+        <mat-error class="invalid-feedback">
+          First name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Middle Name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="lastName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('lastName')?.invalid">
+        <mat-error class="invalid-feedback">
+          Last name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <div>
+        <label for="name">Father’s Name:</label>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="fatherName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('fatherName')?.invalid">
+          <mat-error class="invalid-feedback">
+            Father’s name is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="DOB" formControlName="fatherDOB" [class.is-invalid]="localForm.submitted && firstFormGroup.get('fatherDOB')?.invalid">
+          <mat-error class="invalid-feedback">
+            DOB is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="name">Mother’s Name:</label>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="motherName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('motherName')?.invalid">
+          <mat-error class="invalid-feedback">
+            Mother’s name is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="DOB" formControlName="motherDOB" [class.is-invalid]="localForm.submitted && firstFormGroup.get('motherDOB')?.invalid">
+          <mat-error class="invalid-feedback">
+            DOB is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="name">Spouse Name:</label>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="DOB">
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="name">Children Name: 1</label>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="DOB">
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="name">Children Name: 2</label>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Name" >
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="DOB" >
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button type="submit" mat-button matStepperNext>Next</button>
+    </div>
+</form>
+
