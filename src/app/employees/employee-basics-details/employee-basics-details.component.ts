@@ -23,8 +23,7 @@ class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./employee-basics-details.component.scss']
 })
 export class EmployeeBasicsDetailsComponent implements OnInit {
-  @Output()
-  formReady = new EventEmitter<FormGroup>();
+
 
   matcher = new MyErrorStateMatcher();
 
@@ -57,6 +56,5 @@ export class EmployeeBasicsDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.formReady.emit(this.basicForm);
   }
 }
