@@ -1,0 +1,50 @@
+<div fxLayout="wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch" fxFlexFill>
+    <mat-card fxFlex.gt-xs="90" class="mb15">
+          <form [formGroup]="basicForm">
+            <mat-card-header>
+              <mat-card-title>Basics Details</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="">
+              <p>
+                <mat-form-field>
+                  <input matInput placeholder="First name" formControlName="firstName" [errorStateMatcher]="matcher">
+                  <mat-error *ngIf="nameAadhar.hasError('required')"> First name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Last name" formControlName="lastName" [errorStateMatcher]="matcher">
+                  <mat-error *ngIf="nameAadhar.hasError('required')">Last name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="middle name">
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <input matInput placeholder="Name(As per Aadhar)" formControlName="nameAadhar" [errorStateMatcher]="matcher">
+                  <mat-error *ngIf="nameAadhar.hasError('required')">Aadhar name is required</mat-error>
+                </mat-form-field>
+              </p>
+            </mat-card-content>
+            <mat-card-content class="">
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Birth Date" [matDatepicker]="picker" (focus)="picker.open()"  formControlName="bithday" [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="bithday.hasError('required')">Date is required</mat-error>
+                    </mat-form-field>
+                    <mat-datepicker #picker></mat-datepicker>
+                </p>
+                <p>
+                    <mat-radio-group id="radio">
+                    <mat-radio-button value="1">Father </mat-radio-button>
+                    <mat-radio-button value="2">Husband </mat-radio-button>
+                    </mat-radio-group>
+                    <mat-form-field>
+                    <input matInput placeholder="name" formControlName="Fathername" [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="Fathername.hasError('required')">Father or Husband name is required</mat-error>
+                    </mat-form-field>
+                </p>
+            </mat-card-content>
+        </form>
+    </mat-card>
+</div>
+
