@@ -13,6 +13,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
     },
   ],
 })
+
 export class EmployeeDetailsComponent implements OnInit {
   employeeForm =this._formBuilder.group({});
 
