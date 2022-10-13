@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-employee-reference-details',
@@ -7,17 +8,31 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./employee-reference-details.component.scss']
 })
 export class EmployeeReferenceDetailsComponent implements OnInit {
-  submitted: boolean;
-  thirdFormGroup: FormGroup;
+  myForm: FormGroup; 
+  constructor(private fb: FormBuilder) {}
 
-  constructor(private _formBuilder: FormBuilder) { }
-
-  ngOnInit(): void {
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
-    },  {updateOn: 'change' });
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      references: this.fb.array([])
+    })
+  
   }
-  onSubmit(): void{
-    this.submitted = true
+  
+  get referenceDetails() {
+    return this.myForm.get('references') as FormArray
+  }
+  
+  add() {
+    const phone = this.fb.group({ 
+      name: ['', Validators.required],
+      referenceName: ['', Validators.required],
+      mobileNo: ['', Validators.required],
+    })
+  
+    this.referenceDetails.push(phone);
+  }
+  
+  delete(i: number) {
+    this.referenceDetails.removeAt(i)
   }
 }

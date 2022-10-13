@@ -1,59 +1,93 @@
-
-  <mat-horizontal-stepper  #stepper>
-    <mat-step [stepControl]="femployeeForm" errorMessage="General Information is required.">
-      <ng-template matStepLabel>General Information</ng-template>
-      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-        <app-employee-basics-details></app-employee-basics-details>
-        <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
-          <mat-card fxFlex.gt-xs="40">
-            <app-employee-correspondence-details></app-employee-correspondence-details>
-          </mat-card>
-          <mat-card fxFlex.gt-xs="40">
-            <app-employee-permanent-details></app-employee-permanent-details>
-          </mat-card>
-        </div>
-        <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
-          <mat-card fxFlex.gt-xs="40">
-            <app-employee-spouse-details></app-employee-spouse-details>
-          </mat-card>
-          <mat-card fxFlex.gt-xs="40">
-            <app-employee-bank-details></app-employee-bank-details>
-          </mat-card>
-        </div>
-        <div class="mb20" fxLayout="row wrap" fxLayout.lt-xs="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
-          <mat-card fxFlex.gt-xs="40">
-            <app-employee-nominee-details></app-employee-nominee-details>
-          </mat-card>
-          <mat-card fxFlex.gt-xs="40">
-            <app-employee-nationality-details></app-employee-nationality-details>
-          </mat-card>
-        </div>
-        <div class="next">
-          <button type="submit" (click)="save()" mat-button  matStepperNext>save&continue</button>
-        </div>
-      </form>
-    </mat-step>
-  
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Personal Details is required.">
-      <ng-template matStepLabel>Personal Details</ng-template>
-       <app-employee-personal-details></app-employee-personal-details>
-    </mat-step>
-  
-    <mat-step [stepControl]="thirdFormGroup" errorMessage="Employee Reference is required.">
-      <ng-template matStepLabel>Employee Reference</ng-template>
-       <app-employee-reference-details></app-employee-reference-details>
-    </mat-step>
-    <mat-step errorMessage="Review is required.">
-      <ng-template matStepLabel>Review</ng-template>
-      <app-employee-review-details></app-employee-review-details>
-    </mat-step>   
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+<!-- [linear]="isLinear" -->
+<mat-horizontal-stepper  #stepper> 
+  <mat-step [stepControl]="employeeForm" errorMessage="General Information is required.">
+    <ng-template matStepLabel>General Information</ng-template>
+    <form *ngIf="employee" [formGroup]="employeeForm" (ngSubmit)="employeeForm.valid && onSubmit()">
+      <app-employee-basics-details [employee]="employee"
+      (formReady)="addChildForm('basics', $event)"
+      (valueChange)="onValueChange($event)"></app-employee-basics-details>
+      <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
+        <mat-card fxFlex.gt-xs="40">
+          <app-employee-correspondence-details [employee]="employee"
+          (formReady)="addChildForm('correspondence', $event)"
+          (valueChange)="onValueChange($event)"></app-employee-correspondence-details>
+        </mat-card>
+        <mat-card fxFlex.gt-xs="40">
+          <app-employee-permanent-details [employee]="employee"
+          (formReady)="addChildForm('permanent', $event)"
+          (valueChange)="onValueChange($event)"></app-employee-permanent-details>
+        </mat-card>
       </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+      <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
+        <mat-card fxFlex.gt-xs="40">
+          <app-employee-spouse-details [employee]="employee"
+          (formReady)="addChildForm('spouse', $event)"
+          (valueChange)="onValueChange($event)"></app-employee-spouse-details>
+        </mat-card>
+        <mat-card fxFlex.gt-xs="40">
+          <app-employee-bank-details [employee]="employee"
+          (formReady)="addChildForm('bank', $event)"
+          (valueChange)="onValueChange($event)"></app-employee-bank-details>
+        </mat-card>
+      </div>
+      <div class="mb20" fxLayout="row wrap" fxLayout.lt-xs="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
+        <mat-card fxFlex.gt-xs="40">
+          <app-employee-nominee-details [employee]="employee"
+          (formReady)="addChildForm('nominee', $event)"
+          (valueChange)="onValueChange($event)"></app-employee-nominee-details>
+        </mat-card>
+        <mat-card fxFlex.gt-xs="40">
+          <app-employee-nationality-details></app-employee-nationality-details>
+        </mat-card>
+      </div>
+      <div class="next">
+        <button type="submit"  mat-button  matStepperNext>save&continue</button>
+      </div>
+    </form>
+    
+  <ng-template #loading> Loading ... </ng-template>
+  </mat-step>
+
+  <mat-step [stepControl]="" errorMessage="Personal Details is required.">
+    <ng-template matStepLabel>Family Details</ng-template>
+      <div>
+        <app-employee-personal-details></app-employee-personal-details>
+      </div>
+  </mat-step>
+
+  <mat-step [stepControl]="" errorMessage="Employee Reference is required.">
+    <ng-template matStepLabel>Reference Details</ng-template>
+     <app-employee-reference-details></app-employee-reference-details>
+  </mat-step>
+  <mat-step [stepControl]="" errorMessage="Personal Details is required.">
+    <ng-template matStepLabel>Previous Job Details</ng-template>
+    <form>
+      Previous job Details
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="" errorMessage="Personal Details is required.">
+    <ng-template matStepLabel>Education Details</ng-template>
+    <form>
+      Education Details
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="" errorMessage="Personal Details is required.">
+    <ng-template matStepLabel>Nominee Details</ng-template>
+    <form>
+      Nominee Details
+    </form>
+  </mat-step>
+  <mat-step errorMessage="Review is required.">
+    <ng-template matStepLabel>Review</ng-template>
+    <app-employee-review-details></app-employee-review-details>
+  </mat-step>   
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
 

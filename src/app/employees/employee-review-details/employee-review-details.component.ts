@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-review-details',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeReviewDetailsComponent implements OnInit {
 
-  constructor() { }
+   
+  familyRefForm: FormGroup;
+   
+  constructor(private fb:FormBuilder) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.familyRefForm = this.fb.group({
+      familyDetail: this.fb.array([]) ,
+    });
+  }
+  
+  familyDetails() : FormArray {
+    return this.familyRefForm.get("familyDetail") as FormArray
+  }
+   
+  newQuantity(): FormGroup {
+    return this.fb.group({
+      name: '',
+      relationship: '',
+      dob: '',
+    })
+  }
+   
+  add() {
+    this.familyDetails().push(this.newQuantity());
+  }
+   
+  remove(i:number) {
+    this.familyDetails().removeAt(i);
+  }
+   
+  onSubmit() {
+    console.log(this.familyRefForm.value);
   }
 
 }

@@ -1,23 +1,28 @@
-<form>
-    <div>
-        <label for="reference">Reference</label>
-      </div>
-      <div>
-        <label for="reference">Reference</label>
-      </div>
-      <div>
-        <label for="reference">Reference</label>
-      </div>
-      <div>
-        <label for="reference">Reference</label>
-      </div>
-      <div>
-        <label for="reference">Reference</label>
-      </div>
-      
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-</form>
 
+  <form [formGroup]="familyRefForm" (ngSubmit)="onSubmit()">
+    <table  class="table table-bordered" formArrayName="familyDetail">
+      <tr>
+        <th><button type="button" mat-button (click)="add()">Add</button></th>
+      </tr>
+      <tr *ngFor="let row of familyDetails().controls; let i=index" [formGroupName]="i">
+        <td>
+            Name :
+            <input type="text" formControlName="name" class="form-control">
+        </td>
+        <td>
+            Relationship:
+            <input type="text" formControlName="relationship" class="form-control">
+        </td>
+        <td>
+          Date of Birth:
+          <input type="text" formControlName="dob" class="form-control">
+        </td>
+        <td>
+            <button mat-button (click)="remove(i)">Remove</button>
+        </td>
+      </tr>
+    </table>
+   
+    <button mat-button type="submit">Submit</button>
+    
+  </form>

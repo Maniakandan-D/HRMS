@@ -1,4 +1,5 @@
-<form [formGroup]="permanentForm">
+
+<form [formGroup]="permanentForm" #permanent="ngForm">
     <mat-card-content class="">
         <p>
         <mat-checkbox [formControl]="disableSelect">correspondence address same as permanent address</mat-checkbox>
@@ -28,18 +29,15 @@
                 <input matInput placeholder="Home Phone">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Mobile Phone" formControlName="mobilePhone"  [errorStateMatcher]="matcher">
-                <mat-error *ngIf="mobilePhone.hasError('required')">
+                <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" [class.is-invalid]="permanent.submitted && permanentForm.get('mobilePhone')?.invalid">
+                <mat-error class="invalid-feedback">
                     Mobile number is required
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Email" formControlName="emailFormControl" [errorStateMatcher]="matcher">
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Please enter a valid email address
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
-                Email is required
+                <input matInput placeholder="Email" formControlName="email"  [class.is-invalid]="permanent.submitted && permanentForm.get('email')?.invalid">
+                <mat-error class="invalid-feedback">
+                    Email is required
                 </mat-error>
             </mat-form-field>
         </p>

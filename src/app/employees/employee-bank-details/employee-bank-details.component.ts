@@ -1,21 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || isSubmitted) //|| control.touched 
-    );
-  }
-}
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Employee } from '../shared/employee.model';
 
 @Component({
   selector: 'app-employee-bank-details',
@@ -23,27 +9,40 @@ class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./employee-bank-details.component.scss']
 })
 export class EmployeeBankDetailsComponent implements OnInit {
-  matcher = new MyErrorStateMatcher();
 
-  bankForm = new FormGroup({
-    bankName : new FormControl('', [
-      Validators.required
-    ]),
-    bankNo : new FormControl('', [
-      Validators.required
-    ]),
-    bankAddress : new FormControl('', [
-      Validators.required
-    ])
-  });
+  @Input()
+  employee: Employee;
+
+  bankForm: FormGroup;
+
+  @Output()
+  formReady = new EventEmitter<FormGroup>();
+
+  @Output()
+  valueChange = new EventEmitter<Partial<Employee>>();
+
+  private subscription = new Subscription();
   
- 
-  get bankName() { return this.bankForm.get('bankName'); }
-  get bankNo() { return this.bankForm.get('bankNo'); }
-  get bankAddress() { return this.bankForm.get('bankAddress'); }
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-  }
+    this.bankForm = this.fb.group({
+      bankName: [this.employee.bankName, [Validators.required]],
+      bankNo: [this.employee.bankNo, [Validators.required]],
+      bankAddress: [this.employee.bankAddress, [Validators.required]],
+    }, { updateOn: 'submit' });
 
+    this.subscription.add(
+      this.bankForm.valueChanges.subscribe((value) => {
+        this.valueChange.emit({
+          bankName: value.email,
+        });
+      })
+    );
+
+    this.formReady.emit(this.bankForm);
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

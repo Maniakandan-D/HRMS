@@ -1,21 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || isSubmitted) //|| control.touched 
-    );
-  }
-}
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Employee } from '../shared/employee.model';
 
 @Component({
   selector: 'app-employee-correspondence-details',
@@ -23,37 +9,41 @@ class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./employee-correspondence-details.component.scss']
 })
 export class EmployeeCorrespondenceDetailsComponent implements OnInit {
+  @Input()
+  employee: Employee;
 
-  matcher = new MyErrorStateMatcher();
-  
-  correspondenceForm = new FormGroup({
-    streetAddress : new FormControl('', [
-      Validators.required
-    ]),
-    apartmentUnit : new FormControl('', [
-      Validators.required
-    ]),
-    city : new FormControl('', [
-      Validators.required
-    ]),
-    state : new FormControl('', [
-      Validators.required
-    ]),
-  
-    pincode : new FormControl('', [
-      Validators.required
-    ])
-  });
-  
-  get streetAddress() { return this.correspondenceForm.get('streetAddress'); }
-  get apartmentUnit() { return this.correspondenceForm.get('apartmentUnit'); }
-  get city() { return this.correspondenceForm.get('city'); }
-  get state() { return this.correspondenceForm.get('state'); }
-  get pincode() { return this.correspondenceForm.get('pincode'); }
+  @Output()
+  formReady = new EventEmitter<FormGroup>();
 
-  constructor() { }
+  @Output()
+  valueChange = new EventEmitter<Partial<Employee>>();
+
+  correspondenceForm: FormGroup;
+
+  private subscription = new Subscription();
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-  }
+    this.correspondenceForm = this.fb.group({
+      streetAddress: [this.employee.streetAddress, [Validators.required]],
+      apartmentUnit: [this.employee.apartmentUnit, [Validators.required]],
+      city: [this.employee.city, [Validators.required]],
+      state: [this.employee.state, [Validators.required]],
+      pincode: [this.employee.pincode, [Validators.required]],
+    }, {updateOn:'submit'});
 
+    this.subscription.add(
+      this.correspondenceForm.valueChanges.subscribe((value) => {
+        this.valueChange.emit({
+          streetAddress: value.email,
+        });
+      })
+    );
+
+    this.formReady.emit(this.correspondenceForm);
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
