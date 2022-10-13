@@ -1,5 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, Validators, FormBuilder, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Employee} from '../shared/employee.model';
+
 import { ErrorStateMatcher } from '@angular/material/core';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -23,28 +26,19 @@ class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./employee-basics-details.component.scss']
 })
 export class EmployeeBasicsDetailsComponent implements OnInit {
+  @Input()
+  employee: Employee;
 
+  @Output()
+  valueChange = new EventEmitter<Partial<Employee>>();
 
+  @Output()
+  formReady = new EventEmitter<FormGroup>();
+
+  basicForm: FormGroup;
+
+  private subscription = new Subscription();
   matcher = new MyErrorStateMatcher();
-
-  basicForm = new FormGroup({
-    firstName : new FormControl('', [
-      Validators.required
-    ]),
-    lastName : new FormControl('', [
-      Validators.required
-    ]),
-    nameAadhar : new FormControl('', [
-      Validators.required
-    ]),
-    Fathername : new FormControl('', [
-      Validators.required
-    ]),
-    bithday : new FormControl('', [
-      Validators.required
-    ])
-   
-  });
   
   get firstName() { return this.basicForm.get('firstName'); }
   get lastName() { return this.basicForm.get('lastName'); }
@@ -53,8 +47,32 @@ export class EmployeeBasicsDetailsComponent implements OnInit {
   get Fathername() { return this.basicForm.get('Fathername'); }
   get bithday() { return this.basicForm.get('bithday'); }
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.basicForm = this.fb.group({
+      firstName:  [this.employee.firstName, [Validators.required]],
+      lastName: [this.employee.lastName, [Validators.required]],
+      nameAadhar: [this.employee.nameAadhar, [Validators.required]],
+      Fathername: [this.employee.Fathername, [Validators.required]],
+      bithday: [this.employee.bithday, [Validators.required]],
+    }, { updateOn: 'submit' });
+
+    this.subscription.add(
+      this.basicForm.valueChanges.subscribe((value) => {
+        this.valueChange.emit({
+          firstName: value.firstName,
+          lastName: value.lastName,
+          nameAadhar:  value.nameAadhar,
+          Fathername: value.Fathername,
+          bithday: value.bithday,
+        });
+      })
+    );
+
+    this.formReady.emit(this.basicForm);
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

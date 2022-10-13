@@ -1,38 +1,38 @@
-<form [formGroup]="correspondenceForm">
+<form [formGroup]="correspondenceForm" #correspondence="ngForm">
     <mat-card-content class="">
         <div>
             <mat-card-title>Correspondence Address</mat-card-title>
         </div>
         <p>
             <mat-form-field>
-                <input matInput placeholder="Street Address" formControlName="streetAddress" [errorStateMatcher]="matcher">
-                <mat-error *ngIf="streetAddress.hasError('required')">
+                <input matInput placeholder="Street Address" formControlName="streetAddress" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
                     Street address is required
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Apartment/Unit #" formControlName="apartmentUnit" [errorStateMatcher]="matcher">
-                <mat-error *ngIf="apartmentUnit.hasError('required')">
+                <input matInput placeholder="Apartment/Unit #" formControlName="apartmentUnit" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
                     Apartment/Unit is required
                 </mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
-                <input matInput placeholder="City" formControlName="city" [errorStateMatcher]="matcher">
-                <mat-error *ngIf="city.hasError('required')">
+                <input matInput placeholder="City" formControlName="city" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
                     City is required
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="State" formControlName="state" [errorStateMatcher]="matcher">
-                <mat-error *ngIf="state.hasError('required')">
+                <input matInput placeholder="State" formControlName="state" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
                     State is required
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="PIN Code" formControlName="pincode" [errorStateMatcher]="matcher">
-                <mat-error *ngIf="pincode.hasError('required')">
+                <input matInput placeholder="PIN Code" formControlName="pincode" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
                     PIN code is required
                 </mat-error>
             </mat-form-field>

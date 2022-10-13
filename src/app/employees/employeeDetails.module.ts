@@ -15,7 +15,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule  } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
@@ -28,7 +28,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSortModule } from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatTreeModule} from '@angular/material/tree'
 
 import { EmployeeDetailsRoutingModule } from './employeeDetails-routing.module';
 import { HomeComponent } from './employee/home/home.component';
@@ -44,6 +57,8 @@ import { EmployeeReviewDetailsComponent } from './employee-review-details/employ
 import { EmployeeCorrespondenceDetailsComponent } from './employee-correspondence-details/employee-correspondence-details.component';
 import { EmployeePermanentDetailsComponent } from './employee-permanent-details/employee-permanent-details.component';
 
+import { EmployeeService } from './shared/employee.service';
+import { FamilyDetailsService } from './shared/familyDetails.service';
 
 
 @NgModule({
@@ -77,7 +92,21 @@ import { EmployeePermanentDetailsComponent } from './employee-permanent-details/
         MatDatepickerModule,
         MatNativeDateModule,
         MatTabsModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatTableModule,
+        MatGridListModule,
+        MatMenuModule,
+        MatPaginatorModule,
+        MatSidenavModule,
+        MatSelectModule,
+        MatListModule,
+        MatToolbarModule,
+        MatSortModule,
+        CdkTableModule,
+        CdkTreeModule,
+        DragDropModule,
+        ScrollingModule,
+        MatTreeModule
     ],
     declarations: [
         HomeComponent,
@@ -91,7 +120,11 @@ import { EmployeePermanentDetailsComponent } from './employee-permanent-details/
         EmployeeReferenceDetailsComponent,
         EmployeeReviewDetailsComponent,
         EmployeeCorrespondenceDetailsComponent,
-        EmployeePermanentDetailsComponent
+        EmployeePermanentDetailsComponent,
+    ],
+    providers:[
+        EmployeeService,
+        FamilyDetailsService
     ]
 })
 export class EmployeeDetailsModule {}

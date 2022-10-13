@@ -1,110 +1,76 @@
-<form [formGroup]="secondFormGroup" (ngSubmit)="secondFormGroup.valid && onSubmit()" #localForm>
-    <div>
-      <div>
-        <label for="name">Full Name:</label>
-      </div>
-      <mat-form-field>
-        <input matInput placeholder="Initial" formControlName="initial" [class.is-invalid]="localForm.submitted && firstFormGroup.get('initial')?.invalid">
-        <mat-error class="invalid-feedback">
-          Initial is required
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="First Name" formControlName="firstName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('firstName')?.invalid">
-        <mat-error class="invalid-feedback">
-          First name is required
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Middle Name">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Last Name" formControlName="lastName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('lastName')?.invalid">
-        <mat-error class="invalid-feedback">
-          Last name is required
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div>
-      <div>
-        <label for="name">Father’s Name:</label>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name" formControlName="fatherName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('fatherName')?.invalid">
-          <mat-error class="invalid-feedback">
-            Father’s name is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="DOB" formControlName="fatherDOB" [class.is-invalid]="localForm.submitted && firstFormGroup.get('fatherDOB')?.invalid">
-          <mat-error class="invalid-feedback">
-            DOB is required
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <div>
-        <label for="name">Mother’s Name:</label>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name" formControlName="motherName" [class.is-invalid]="localForm.submitted && firstFormGroup.get('motherName')?.invalid">
-          <mat-error class="invalid-feedback">
-            Mother’s name is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="DOB" formControlName="motherDOB" [class.is-invalid]="localForm.submitted && firstFormGroup.get('motherDOB')?.invalid">
-          <mat-error class="invalid-feedback">
-            DOB is required
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <div>
-        <label for="name">Spouse Name:</label>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="DOB">
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <div>
-        <label for="name">Children Name: 1</label>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="DOB">
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <div>
-        <label for="name">Children Name: 2</label>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name" >
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="DOB" >
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button type="submit" mat-button matStepperNext>Next</button>
-    </div>
-</form>
+<div class="table-wrapper">
 
+
+  <form (submit)="onSubmit()" #familyForm="ngForm">
+      <mat-form-field>
+          <input matInput placeholder="Name" name="name" required [(ngModel)]="familyData.name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Relationship" name="relationship" required [(ngModel)]="familyData.relationship">
+          <mat-option value="default"></mat-option>
+          <mat-option *ngFor="let relationshipName of relationshipDetails" [value]="relationshipName">{{relationshipName.relationShipName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <mat-form-field>
+          <input matInput placeholder="Relationship" name="relationship" required [(ngModel)]="familyData.relationship">
+      </mat-form-field> -->
+      <mat-form-field>
+        <input matInput placeholder="Date of Birth" [matDatepicker]="picker" (focus)="picker.open()"  required [(ngModel)]="familyData.dob">
+    </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+      <!-- <mat-form-field>
+          <input matInput placeholder="Date of Birth" name="dob" required [(ngModel)]="familyData.dob">
+      </mat-form-field> -->
+      <mat-form-field>
+        <input matInput placeholder="Mobile Number" name="mobileNo" required [(ngModel)]="familyData.mobileNo">
+    </mat-form-field>
+      <ng-container *ngIf="isEditMode; else elseTemplate">
+          <button mat-button color="primary">Update</button>
+          <a mat-button color="warn" (click)="cancelEdit()">Cancel</a>
+      </ng-container>
+      <ng-template #elseTemplate>
+          <button mat-button color="primary">Add</button>
+      </ng-template>
+  </form>
+
+ 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> #Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="relationship">
+          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> Relationship </th>
+          <td  mat-cell *matCellDef="let element"> {{element.relationship}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dob">
+          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> Date of Birth </th>
+          <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+      </ng-container>
+      <ng-container matColumnDef="mobileNo">
+        <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> Mobile Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNo}} </td>
+    </ng-container>
+
+      <ng-container matColumnDef="actions">
+          <th [style.display]="'none'" mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+              <a href="javascript:void(0)" (click)="edit(element)">Edit</a> |
+              <a href="javascript:void(0)" (click)="delete(element.id)">Delete</a>
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{'editable-row': familyData.id === row.id}"></tr>
+  </table>
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+</div>

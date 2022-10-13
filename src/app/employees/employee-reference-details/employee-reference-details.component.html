@@ -1,55 +1,21 @@
-<form [formGroup]="thirdFormGroup">
-    <div>
-      <div>
-        <label for="reference">Reference:</label>
-      </div>
-      <div>
+<form [formGroup]="myForm">
+  <div formArrayName="references">
+      <div *ngFor="let row of referenceDetails.controls; let i=index" [formGroupName]="i">
         <mat-form-field>
-          <input matInput placeholder="Name" formControlName="thirdCtrl" required>
+          <input matInput placeholder="Name" name="name" formControlName="name">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Mobile No:" formControlName="thirdCtrl" required>
+          <input matInput placeholder="Reference" name="name" formControlName="referenceName">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Relationship" formControlName="thirdCtrl" required>
+          <input matInput placeholder="Mobile No" name="name" formControlName="mobileNo">
         </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <div>
-        <label for="reference">Reference:</label>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name" formControlName="thirdCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Mobile No:" formControlName="thirdCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Relationship" formControlName="thirdCtrl" required>
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <div>
-        <label for="reference">Reference:</label>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name" formControlName="thirdCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Mobile No:" formControlName="thirdCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Relationship" formControlName="thirdCtrl" required>
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-</form>
 
+          <button mat-button (click)="delete(i)">Delete</button>
+
+      </div>
+  </div>
+
+  <button mat-button (click)="add()">Add</button>
+
+</form>

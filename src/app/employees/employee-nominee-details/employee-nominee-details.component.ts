@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Subscription } from 'rxjs';
+import { Employee } from '../shared/employee.model';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -24,19 +26,38 @@ class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class EmployeeNomineeDetailsComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
-  nomineeForm = new FormGroup({
-    dependents : new FormControl('', [
-      Validators.required
-    ]),
-    nominee : new FormControl('', [
-      Validators.required
-    ])
-  });
-  get dependents() { return this.nomineeForm.get('dependents'); }
-  get nominee() { return this.nomineeForm.get('nominee'); }
-  constructor() { }
+  @Input()
+  employee: Employee;
+
+  nomineeForm: FormGroup;
+
+  @Output()
+  formReady = new EventEmitter<FormGroup>();
+
+  @Output()
+  valueChange = new EventEmitter<Partial<Employee>>();
+
+  private subscription = new Subscription();
+  
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-  }
+    this.nomineeForm = this.fb.group({
+      dependents: [this.employee.dependents, [Validators.required]],
+      nominee: [this.employee.nominee, [Validators.required]],
+    }, { updateOn: 'submit' }); 
 
+    this.subscription.add(
+      this.nomineeForm.valueChanges.subscribe((value) => {
+        this.valueChange.emit({
+          dependents: value.email,
+        });
+      })
+    );
+
+    this.formReady.emit(this.nomineeForm);
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
