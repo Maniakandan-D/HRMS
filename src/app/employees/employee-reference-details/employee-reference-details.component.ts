@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { ReferenceDetails, ReferenceDetailsColumns, ReferenceDetailsVM } from '../shared/shared/add-edit.model';
+import { AddEditService } from '../shared/shared/add-edit.service';
 
 
 @Component({
@@ -8,31 +11,63 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./employee-reference-details.component.scss']
 })
 export class EmployeeReferenceDetailsComponent implements OnInit {
-  myForm: FormGroup; 
-  constructor(private fb: FormBuilder) {}
+  displayedColumns: string[] = ReferenceDetailsColumns.map((col) => col.key);
+  columnsSchema: any = ReferenceDetailsColumns;
+  dataSource = new MatTableDataSource<ReferenceDetails>();
+  valid: any = {};
+  constructor(private addEditService: AddEditService) {}
 
   ngOnInit() {
-    this.myForm = this.fb.group({
-      references: this.fb.array([])
-    })
-  
+    this.getAll();
   }
   
-  get referenceDetails() {
-    return this.myForm.get('references') as FormArray
+  getAll(){
+    this.addEditService.getAllReference().subscribe((res: any) => {
+      this.dataSource.data = res;
+    });
+  }
+
+  editRow(row: ReferenceDetailsVM) {
+    if (row.id === '') {
+      this.addEditService.addReference(row).subscribe((newReferenceDetail: ReferenceDetailsVM) => {
+        row.id = newReferenceDetail.id;
+        row.isEdit = false;
+      });
+    } else {
+      this.addEditService.updateReference(row).subscribe(() => (row.isEdit = false));
+    }
+  }
+
+  addRow() {
+    const newRow: ReferenceDetails = {
+      id: '',
+      name: '',
+      mobileNo: '',
+      relationShip: ''
+    };
+    this.dataSource.data = [newRow, ...this.dataSource.data];
+  }
+
+  removeRow(id: any) {
+    this.addEditService.deleteReference(id).subscribe(() => {
+      this.dataSource.data = this.dataSource.data.filter(
+        (u: ReferenceDetails) => u.id !== id
+      );
+    });
   }
   
-  add() {
-    const phone = this.fb.group({ 
-      name: ['', Validators.required],
-      referenceName: ['', Validators.required],
-      mobileNo: ['', Validators.required],
-    })
-  
-    this.referenceDetails.push(phone);
+  inputHandler(e: any, id: number, key: string) {
+    if (!this.valid[id]) {
+      this.valid[id] = {};
+    }
+    this.valid[id][key] = e.target.validity.valid;
+  }
+
+  disableSubmit(id: number) {
+    if (this.valid[id]) {
+      return Object.values(this.valid[id]).some((item) => item === false);
+    }
+    return false;
   }
   
-  delete(i: number) {
-    this.referenceDetails.removeAt(i)
-  }
 }

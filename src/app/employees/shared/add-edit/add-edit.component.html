@@ -17,12 +17,23 @@
         <span *ngSwitchDefault> {{ element[col.key] }} </span>
       </div>
       <div [ngSwitch]="col.type" *ngIf="element.isEdit">
-        <div *ngSwitchCase="'isSelected'"></div>
         <div class="btn-edit" *ngSwitchCase="'isEdit'">
           <button
             mat-button (click)="editRow(element)" [disabled]="disableSubmit(element.id)"> Update
           </button>
         </div>
+        <mat-form-field class="form-input" *ngSwitchCase="'select'" appearance="fill">
+          <mat-label>Relationship</mat-label>  
+          <mat-select matInput #relationship="ngModel" [(ngModel)]="element[col.key]" required style="width:150px;">  
+              <mat-option value="Father">Father</mat-option>  
+              <mat-option value="Mother">Mother</mat-option>  
+              <mat-option value="Spouse">Spouse</mat-option>  
+              <mat-option value="Brother">Brother</mat-option>  
+              <mat-option value="Sister">Sister</mat-option> 
+              <mat-option value="Daughter">Daughter</mat-option> 
+              <mat-option value="Son">Son</mat-option>  
+          </mat-select>  
+        </mat-form-field>
         <mat-form-field class="form-input" *ngSwitchCase="'date'" appearance="fill">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="picker" [(ngModel)]="element[col.key]"/>

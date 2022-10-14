@@ -51,7 +51,7 @@
   <mat-step [stepControl]="" errorMessage="Personal Details is required.">
     <ng-template matStepLabel>Family Details</ng-template>
       <div>
-        <app-employee-personal-details></app-employee-personal-details>
+        <app-add-edit></app-add-edit>
       </div>
   </mat-step>
 
@@ -65,9 +65,7 @@
   </mat-step>
   <mat-step [stepControl]="" errorMessage="Personal Details is required.">
     <ng-template matStepLabel>Education Details</ng-template>
-    <form>
-      Education Details
-    </form>
+    <app-employee-add-edit></app-employee-add-edit>
   </mat-step>
   <mat-step [stepControl]="" errorMessage="Personal Details is required.">
     <ng-template matStepLabel>Nominee Details</ng-template>

@@ -15,7 +15,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatNativeDateModule  } from '@angular/material/core';
+import { MatNativeDateModule, MatOption, MatOptionModule  } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
@@ -60,6 +60,8 @@ import { EmployeePermanentDetailsComponent } from './employee-permanent-details/
 import { EmployeeService } from './shared/employee.service';
 import { FamilyDetailsService } from './shared/familyDetails.service';
 import { AddEditComponent } from './shared/add-edit/add-edit.component';
+import { EmployeeAddEditComponent } from './directive/employee-add-edit/employee-add-edit.component';
+import { DragableColumnDirective } from './directive/Dragable-column-directive/dragable-column.directive';
 
 
 @NgModule({
@@ -107,7 +109,9 @@ import { AddEditComponent } from './shared/add-edit/add-edit.component';
         CdkTreeModule,
         DragDropModule,
         ScrollingModule,
-        MatTreeModule
+        MatTreeModule,
+        MatOptionModule,
+        
     ],
     declarations: [
         HomeComponent,
@@ -123,6 +127,8 @@ import { AddEditComponent } from './shared/add-edit/add-edit.component';
         EmployeeCorrespondenceDetailsComponent,
         EmployeePermanentDetailsComponent,
         AddEditComponent,
+        EmployeeAddEditComponent,
+        DragableColumnDirective
     ],
     providers:[
         EmployeeService,

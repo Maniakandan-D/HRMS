@@ -17,20 +17,11 @@
     margin: auto;
     text-align: right;
     margin-bottom: 10px;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: space-between;
   }
   
-  // .mat-button-add-row {
-  //  float: left;
-  // }
-  
-  .button-remove-rows {
-    background: red;
-    color: #ffffff;
-    margin-right: 5px;
-  }
   
   .button-remove {
     color: red;

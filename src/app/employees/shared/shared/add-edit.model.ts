@@ -33,7 +33,33 @@ export const FamilyDetailsColumns = [
     }
   ];
 
-  export class RelationshipName{
-    id:string;
-    name:string[];
- }
+ export class ReferenceDetails{
+  id: string;
+  name: string;
+  mobileNo: string;
+  relationShip: string;
+}
+export  class  ReferenceDetailsVM extends ReferenceDetails{
+  isEdit: boolean;
+}
+
+export const ReferenceDetailsColumns = [
+  {
+    key: 'name',
+    type: 'text',
+    label: 'Reference Name',
+    required: true,
+  },
+  {
+    key: 'mobileNo',
+    type: 'text',
+    label: 'Mobile Number',
+    required: true,
+  },
+  {
+    key: 'relation',
+    type: 'select',
+    label: 'Relationship',
+    required: true,
+  }
+];

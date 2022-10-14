@@ -4,7 +4,7 @@ import { FamilyDetailsVM } from '../shared/add-edit.model';
 import { FamilyDetails } from '../shared/add-edit.model';
 import { FamilyDetailsColumns } from '../shared/add-edit.model';
 import { AddEditService } from '../shared/add-edit.service';
-import { RelationshipName } from '../shared/add-edit.model';
+
 
 @Component({
   selector: 'app-add-edit',
@@ -12,7 +12,7 @@ import { RelationshipName } from '../shared/add-edit.model';
   styleUrls: ['./add-edit.component.scss']
 })
 export class AddEditComponent implements OnInit {
-  relation: RelationshipName[]=[];
+  
   displayedColumns: string[] = FamilyDetailsColumns.map((col) => col.key);
   columnsSchema: any = FamilyDetailsColumns;
   dataSource = new MatTableDataSource<FamilyDetails>();
@@ -21,7 +21,7 @@ export class AddEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.getRelationship();
+   
   }
 
   getAll(){
@@ -72,11 +72,6 @@ export class AddEditComponent implements OnInit {
       return Object.values(this.valid[id]).some((item) => item === false);
     }
     return false;
-  }
-  getRelationship(){
-    this.addEditService.getRelationship().subscribe((res: any) => {
-      this.dataSource.data = res;
-    });
   }
   
 }

@@ -1,21 +1,45 @@
-<form [formGroup]="myForm">
-  <div formArrayName="references">
-      <div *ngFor="let row of referenceDetails.controls; let i=index" [formGroupName]="i">
-        <mat-form-field>
-          <input matInput placeholder="Name" name="name" formControlName="name">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Reference" name="name" formControlName="referenceName">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Mobile No" name="name" formControlName="mobileNo">
-        </mat-form-field>
+<article class="table-header">
 
-          <button mat-button (click)="delete(i)">Delete</button>
-
-      </div>
+  <div>
+    <button class="button-add-row" mat-button (click)="addRow()">Add</button>
   </div>
-
-  <button mat-button (click)="add()">Add</button>
-
-</form>
+</article>
+<table mat-table [dataSource]="dataSource">
+  <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+    <th mat-header-cell *matHeaderCellDef>{{ col.label }}</th>
+    <td mat-cell *matCellDef="let element">
+      <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+        <div class="btn-edit" *ngSwitchCase="'isEdit'">
+          <button mat-button (click)="element.isEdit = !element.isEdit"> Edit </button>
+          <button mat-button class="button-remove" (click)="removeRow(element.id)"> Delete </button>
+        </div>
+        <span *ngSwitchCase="'date'"> {{ element[col.key] | date: 'mediumDate' }} </span>
+        <span *ngSwitchDefault> {{ element[col.key] }} </span>
+      </div>
+      <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+        <div class="btn-edit" *ngSwitchCase="'isEdit'">
+          <button
+            mat-button (click)="editRow(element)" [disabled]="disableSubmit(element.id)"> Update
+          </button>
+        </div>
+        <mat-form-field class="form-input" *ngSwitchCase="'select'" appearance="fill">
+          <mat-label>Relationship</mat-label>  
+          <mat-select matInput #relationship="ngModel" [(ngModel)]="element[col.key]" required style="width:150px;">  
+              <mat-option value="Father">Father</mat-option>  
+              <mat-option value="Mother">Mother</mat-option>  
+              <mat-option value="Spouse">Spouse</mat-option>  
+              <mat-option value="Brother">Brother</mat-option>  
+              <mat-option value="Sister">Sister</mat-option> 
+              <mat-option value="Daughter">Daughter</mat-option> 
+              <mat-option value="Son">Son</mat-option>  
+          </mat-select>  
+        </mat-form-field>
+        <mat-form-field class="form-input" *ngSwitchDefault>
+          <input matInput [required]="col.required" [pattern]="col.pattern" [type]="col.type"  [(ngModel)]="element[col.key]" (change)="inputHandler($event, element.id, col.key)"/>
+        </mat-form-field>
+      </div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

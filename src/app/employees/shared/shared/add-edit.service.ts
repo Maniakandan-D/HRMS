@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { FamilyDetails } from './add-edit.model';
-import { RelationshipName } from './add-edit.model';
+import { ReferenceDetails } from './add-edit.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddEditService {
   apiEndpoint: string  = environment.BackendApiEndpointFamilyDetails;
-  apiEndpointName: string  = environment.BackendApiEndpointRelationshipName;
+  apiEndpointName: string  = environment.BackendApiEndpointReferenceDetails;
 
   constructor(private http: HttpClient) { }
 
@@ -32,8 +32,25 @@ export class AddEditService {
     return res
     }));
   }
-  getRelationship(): Observable<RelationshipName[]> {
-    return this.http.get<RelationshipName[]>(`${this.apiEndpointName}`);
+
+
+
+  getAllReference(): Observable<ReferenceDetails[]> {
+    return this.http.get<ReferenceDetails[]>(`${this.apiEndpointName}`);
+  }
+  
+  addReference(referenceDetails: ReferenceDetails): Observable<ReferenceDetails> {
+    return this.http.post<ReferenceDetails>(`${this.apiEndpoint}`, referenceDetails);
+  }
+
+  updateReference(referenceDetails: ReferenceDetails): any{
+    return this.http.put(`${this.apiEndpoint}/${referenceDetails.id}`, referenceDetails);
+  }
+
+  deleteReference(id:string): Observable<ReferenceDetails>{
+    return this.http.delete<ReferenceDetails>(`${this.apiEndpoint}/${id}`).pipe(map((res: any ) =>{
+    return res
+    }));
   }
 
 }
