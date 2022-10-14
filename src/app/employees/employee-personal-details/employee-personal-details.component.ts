@@ -1,7 +1,7 @@
 import { Component, OnInit,  ViewChild } from '@angular/core';
 import * as _ from 'lodash';
 import { MatTableDataSource } from '@angular/material/table';
-import { FamilyDetails, FamilyDetailsVM } from '../shared/familyDetails.model';
+import { FamilyDetailsV1, FamilyDetailsVM } from '../shared/familyDetails.model';
 import { FamilyDetailsService } from '../shared/familyDetails.service';
 import { NgForm } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
@@ -16,7 +16,7 @@ export class EmployeePersonalDetailsComponent implements OnInit {
   @ViewChild('familyForm', { static: false })
   familyForm: NgForm;
 
-  familyData: FamilyDetails = new FamilyDetails();
+  familyData: FamilyDetailsV1 = new FamilyDetailsV1();
   relationshipDetails: FamilyDetailsVM[] = [];
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'name', 'relationship', 'dob', 'mobileNo', 'actions'];
@@ -52,7 +52,7 @@ export class EmployeePersonalDetailsComponent implements OnInit {
   delete(id: any) {
     this.familyDetailsService.deleteItem(id).subscribe((response: any) => {
 
-      this.dataSource.data = this.dataSource.data.filter((o: FamilyDetails) => {
+      this.dataSource.data = this.dataSource.data.filter((o: FamilyDetailsV1) => {
         return o.id !== id ? o : false;
       })
       console.log(this.dataSource.data);
@@ -70,7 +70,7 @@ export class EmployeePersonalDetailsComponent implements OnInit {
 
   update() {
     this.familyDetailsService.update(this.familyData.id, this.familyData).subscribe((response: any) => {
-      this.dataSource.data = this.dataSource.data.map((o: FamilyDetails) => {
+      this.dataSource.data = this.dataSource.data.map((o: FamilyDetailsV1) => {
         if (o.id === response.id) {
           o = response;
         }

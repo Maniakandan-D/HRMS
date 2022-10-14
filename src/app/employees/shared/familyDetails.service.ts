@@ -1,7 +1,7 @@
 // http-data.servie.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import {  FamilyDetails, FamilyDetailsVM} from './familyDetails.model';
+import {  FamilyDetailsV1, FamilyDetailsVM} from './familyDetails.model';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -44,18 +44,18 @@ export class FamilyDetailsService {
 
 
   // Create a new item
-  create(FamilyDetail: any): Observable<FamilyDetails> {
+  create(FamilyDetail: any): Observable<FamilyDetailsV1> {
     return this.http
-      .post<FamilyDetails>(this.base_path, JSON.stringify(FamilyDetail), this.httpOptions)
+      .post<FamilyDetailsV1>(this.base_path, JSON.stringify(FamilyDetail), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 // Get single FamilyDetails data by ID
-  get(id: string): Observable<FamilyDetails> {
+  get(id: string): Observable<FamilyDetailsV1> {
     return this.http
-      .get<FamilyDetails>(this.base_path + '/' + id)
+      .get<FamilyDetailsV1>(this.base_path + '/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -63,9 +63,9 @@ export class FamilyDetailsService {
   }
 
   // Get FamilyDetails data
-  getList(): Observable<FamilyDetails> {
+  getList(): Observable<FamilyDetailsV1> {
     return this.http
-      .get<FamilyDetails>(this.base_path)
+      .get<FamilyDetailsV1>(this.base_path)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -73,9 +73,9 @@ export class FamilyDetailsService {
   }
 
   // Update  by id
-  update(id: number, FamilyDetail: any): Observable<FamilyDetails> {
+  update(id: number, FamilyDetail: any): Observable<FamilyDetailsV1> {
     return this.http
-      .put<FamilyDetails>(this.base_path + '/' + id, JSON.stringify(FamilyDetail), this.httpOptions)
+      .put<FamilyDetailsV1>(this.base_path + '/' + id, JSON.stringify(FamilyDetail), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -85,7 +85,7 @@ export class FamilyDetailsService {
   // Delete item by id
   deleteItem(id: string) {
     return this.http
-      .delete<FamilyDetails>(this.base_path + '/' + id, this.httpOptions)
+      .delete<FamilyDetailsV1>(this.base_path + '/' + id, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

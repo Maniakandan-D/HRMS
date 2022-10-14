@@ -1,0 +1,46 @@
+{
+  "FamilyDetails": [
+    {
+      "id": "63490dc896eb2dd874847044",
+      "name": "Dianna",
+      "relationship": "Mother",
+      "birthDate": "02-04-1982"
+    },
+    {
+      "id": "63490dc8134c94ee9d7c99a6",
+      "name": "Marion",
+      "relationship": "Father",
+      "birthDate": "2022-10-25T18:30:00.000Z",
+      "isEdit": false
+    },
+    {
+      "id": "63490dc861a1135bab1ae6c3",
+      "name": "Marlene",
+      "relationship": "Mother",
+      "birthDate": "2022-10-25T18:30:00.000Z",
+      "isEdit": false
+    }
+  ],
+  "RelationshipName": [
+    {
+      "id": "63490dc8334cd3fb20838660",
+      "name": "Father"
+    },
+    {
+      "id": "63490dc85b36fb4a19a8744c",
+      "name": "Mother"
+    },
+    {
+      "id": "63490dc8b7a602385c225f93",
+      "name": "Spouse"
+    },
+    {
+      "id": "63490dc82abca441dbfbc297",
+      "name": "Brother"
+    },
+    {
+      "id": "63490dc887658f1a9254c303",
+      "name": "Sister"
+    }
+  ]
+}

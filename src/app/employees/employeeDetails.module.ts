@@ -59,6 +59,7 @@ import { EmployeePermanentDetailsComponent } from './employee-permanent-details/
 
 import { EmployeeService } from './shared/employee.service';
 import { FamilyDetailsService } from './shared/familyDetails.service';
+import { AddEditComponent } from './shared/add-edit/add-edit.component';
 
 
 @NgModule({
@@ -121,6 +122,7 @@ import { FamilyDetailsService } from './shared/familyDetails.service';
         EmployeeReviewDetailsComponent,
         EmployeeCorrespondenceDetailsComponent,
         EmployeePermanentDetailsComponent,
+        AddEditComponent,
     ],
     providers:[
         EmployeeService,
