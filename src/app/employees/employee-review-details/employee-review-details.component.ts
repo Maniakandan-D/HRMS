@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-employee-review-details',
@@ -7,40 +8,19 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
   styleUrls: ['./employee-review-details.component.scss']
 })
 export class EmployeeReviewDetailsComponent implements OnInit {
+  imgsrc = 'https://www.w3schools.com/howto/img_avatar.png';
 
-   
-  familyRefForm: FormGroup;
-   
-  constructor(private fb:FormBuilder) {}
-
-  ngOnInit() {
-    this.familyRefForm = this.fb.group({
-      familyDetail: this.fb.array([]) ,
-    });
-  }
+  constructor(
+    public _d: DomSanitizer
+  ) { }
+  ngOnInit(): void {
   
-  familyDetails() : FormArray {
-    return this.familyRefForm.get("familyDetail") as FormArray
   }
-   
-  newQuantity(): FormGroup {
-    return this.fb.group({
-      name: '',
-      relationship: '',
-      dob: '',
-    })
-  }
-   
-  add() {
-    this.familyDetails().push(this.newQuantity());
-  }
-   
-  remove(i:number) {
-    this.familyDetails().removeAt(i);
-  }
-   
-  onSubmit() {
-    console.log(this.familyRefForm.value);
+
+  fileChange(e) {
+    const file = e.srcElement.files[0]; 
+    this.imgsrc = window.URL.createObjectURL(file); 
+
   }
 
 }

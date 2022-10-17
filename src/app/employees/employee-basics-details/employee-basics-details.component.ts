@@ -1,24 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Employee} from '../shared/employee.model';
 
-import { ErrorStateMatcher } from '@angular/material/core';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || isSubmitted) //|| control.touched 
-    );
-  }
-}
 
 @Component({
   selector: 'app-employee-basics-details',
@@ -38,7 +22,6 @@ export class EmployeeBasicsDetailsComponent implements OnInit {
   basicForm: FormGroup;
 
   private subscription = new Subscription();
-  matcher = new MyErrorStateMatcher();
   
   get firstName() { return this.basicForm.get('firstName'); }
   get lastName() { return this.basicForm.get('lastName'); }
@@ -47,6 +30,7 @@ export class EmployeeBasicsDetailsComponent implements OnInit {
   get Fathername() { return this.basicForm.get('Fathername'); }
   get bithday() { return this.basicForm.get('bithday'); }
 
+  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {

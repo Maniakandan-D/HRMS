@@ -26,6 +26,9 @@ export class EmployeeCorrespondenceDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.correspondenceForm = this.fb.group({
+      email: [this.employee.email, [Validators.required, Validators.email,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      mobilePhone: [this.employee.mobilePhone, [Validators.required]],
       streetAddress: [this.employee.streetAddress, [Validators.required]],
       apartmentUnit: [this.employee.apartmentUnit, [Validators.required]],
       city: [this.employee.city, [Validators.required]],

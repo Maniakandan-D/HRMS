@@ -1,0 +1,96 @@
+{
+  "FamilyDetails": [
+    {
+      "id": "63495486c5b390c02d0eda20",
+      "name": "Brenda",
+      "relationship": "Sister",
+      "birthDate": "14-11-1986"
+    },
+    {
+      "id": "63495486266086c5cc04f2b9",
+      "name": "Frank",
+      "relationship": "Spouse",
+      "birthDate": "11-09-2020"
+    },
+    {
+      "id": "634954865095244a6215ee09",
+      "name": "Melissa",
+      "relationship": "Sister",
+      "birthDate": "25-06-2010"
+    },
+    {
+      "id": "63495486fc711fde2f8ca4c1",
+      "name": "Bridgette",
+      "relationship": "Mother",
+      "birthDate": "29-11-2006"
+    },
+    {
+      "id": "63495486f0298676b1d9d0f3",
+      "name": "Hancock",
+      "relationship": "Spouse",
+      "birthDate": "25-11-2013"
+    },
+    {
+      "id": "634954860d1cf1fe73d787e0",
+      "name": "Battle",
+      "relationship": "Brother",
+      "birthDate": "07-07-1996"
+    },
+    {
+      "id": "63495486a830164894bc2e46",
+      "name": "Betsy",
+      "relationship": "Spouse",
+      "birthDate": "10-11-2003"
+    },
+    {
+      "id": "6349548659bb778c7b29eaf9",
+      "name": "Hopper",
+      "relationship": "Father",
+      "birthDate": "03-01-2019"
+    },
+    {
+      "id": "63495486b792e9eb5ee7c441",
+      "name": "Katelyn",
+      "relationship": "Brother",
+      "birthDate": "30-05-1982"
+    },
+    {
+      "id": "634954864790874acdfc47da",
+      "name": "Marta",
+      "relationship": "Brother",
+      "birthDate": "03-06-1996"
+    }
+  ],
+  "ReferenceDetails": [
+    {
+      "id": "634954868657162c016b110d",
+      "name": "Dunn",
+      "mobileNo": "+1 (862) 584-3890",
+      "relationship": "Brother"
+    },
+    {
+      "id": "63495486dd9d3435ae5bbb6e",
+      "name": "Burris",
+      "mobileNo": "+1 (870) 469-2447",
+      "relationship": "Brother"
+    },
+    {
+      "id": "6349548695d6f92244bc44e8",
+      "name": "Wendi",
+      "mobileNo": "+1 (915) 458-3024",
+      "relationship": "Brother"
+    },
+    {
+      "id": "63495486a4158473e9a07d9f",
+      "name": "Lang",
+      "mobileNo": "+1 (820) 437-2781",
+      "relationship": "Father"
+    },
+    {
+      "id": "6349548622525e578f9a721d",
+      "name": "Burks",
+      "mobileNo": "+1 (865) 527-2329",
+      "relationship": "Brother"
+    }
+  ]
+}
