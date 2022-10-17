@@ -1,24 +1,49 @@
-<!-- [linear]="isLinear" -->
-<mat-horizontal-stepper  #stepper> 
+<!-- " -->
+<mat-vertical-stepper [linear]="isLinear"  #stepper> 
   <mat-step [stepControl]="employeeForm" errorMessage="General Information is required.">
     <ng-template matStepLabel>General Information</ng-template>
+    
     <form *ngIf="employee" [formGroup]="employeeForm" (ngSubmit)="employeeForm.valid && onSubmit()">
-      <app-employee-basics-details [employee]="employee"
-      (formReady)="addChildForm('basics', $event)"
-      (valueChange)="onValueChange($event)"></app-employee-basics-details>
-      <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
-        <mat-card fxFlex.gt-xs="40">
-          <app-employee-correspondence-details [employee]="employee"
-          (formReady)="addChildForm('correspondence', $event)"
-          (valueChange)="onValueChange($event)"></app-employee-correspondence-details>
+      <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=5% fxLayoutAlign="space-around stretch">
+        <mat-card fxFlex.gt-xs=15%>
+          <mat-card-content class="">
+            <!-- <app-employee-image-details></app-employee-image-details> -->
+            <app-employee-review-details></app-employee-review-details>
+            </mat-card-content>
         </mat-card>
-        <mat-card fxFlex.gt-xs="40">
-          <app-employee-permanent-details [employee]="employee"
-          (formReady)="addChildForm('permanent', $event)"
-          (valueChange)="onValueChange($event)"></app-employee-permanent-details>
+        <mat-card fxFlex.gt-xs=80%>
+          <mat-card-content class="">
+            <mat-card-header>
+              <mat-card-title>Basics Details</mat-card-title>
+            </mat-card-header>
+              <app-employee-basics-details [employee]="employee" (formReady)="addChildForm('basics', $event)"
+              (valueChange)="onValueChange($event)"></app-employee-basics-details>
+          </mat-card-content>
         </mat-card>
       </div>
-      <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
+      <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=8% fxLayoutAlign="space-around stretch">
+        <mat-card fxFlex.gt-xs=100%>
+          <mat-card-content>
+            <mat-card-header>
+              <mat-card-title>Communication Details</mat-card-title>
+            </mat-card-header>
+              <app-employee-correspondence-details [employee]="employee"
+              (formReady)="addChildForm('correspondence', $event)"
+              (valueChange)="onValueChange($event)"></app-employee-correspondence-details>
+              <app-employee-permanent-details [employee]="employee"
+              (formReady)="addChildForm('permanent', $event)"
+              (valueChange)="onValueChange($event)"></app-employee-permanent-details>
+        </mat-card-content>
+        </mat-card>
+        <!-- <mat-card fxFlex.gt-xs=46%>
+          <mat-card-content class="">
+            <app-employee-permanent-details [employee]="employee"
+            (formReady)="addChildForm('permanent', $event)"
+            (valueChange)="onValueChange($event)"></app-employee-permanent-details>
+          </mat-card-content>
+        </mat-card> -->
+      </div>
+      <!-- <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
         <mat-card fxFlex.gt-xs="40">
           <app-employee-spouse-details [employee]="employee"
           (formReady)="addChildForm('spouse', $event)"
@@ -39,9 +64,9 @@
         <mat-card fxFlex.gt-xs="40">
           <app-employee-nationality-details></app-employee-nationality-details>
         </mat-card>
-      </div>
+      </div> -->
       <div class="next">
-        <button type="submit"  mat-button  matStepperNext>save&continue</button>
+        <button type="submit" color="primary" mat-raised-button  matStepperNext>Save & Continue</button>
       </div>
     </form>
     
@@ -73,10 +98,14 @@
       Nominee Details
     </form>
   </mat-step>
+  <mat-step [stepControl]="" errorMessage="Personal Details is required.">
+    <ng-template matStepLabel>Bank Details</ng-template>
+  </mat-step>
   <mat-step errorMessage="Review is required.">
     <ng-template matStepLabel>Review</ng-template>
     <app-employee-review-details></app-employee-review-details>
-  </mat-step>   
+  </mat-step>
+
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     You are now done.
@@ -85,5 +114,5 @@
       <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
-</mat-horizontal-stepper>
+</mat-vertical-stepper>
 

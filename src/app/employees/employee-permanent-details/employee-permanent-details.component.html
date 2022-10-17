@@ -1,19 +1,21 @@
 
 <form [formGroup]="permanentForm" #permanent="ngForm">
-    <mat-card-content class="">
-        <p>
-        <mat-checkbox [formControl]="disableSelect">correspondence address same as permanent address</mat-checkbox>
-        </p>
-        <mat-card-title>Permanent Address</mat-card-title>
-        <p> 
+    <!-- <mat-card-content class=""> -->
+        <div>
+            <mat-checkbox [formControl]="disableSelect">correspondence address same as permanent address</mat-checkbox>
+        </div>
+        <div>
+            <mat-card-subtitle>Permanent Address</mat-card-subtitle>
+        </div>
+        <div>
             <mat-form-field>
                 <input matInput placeholder="Street Address" [disabled]="disableSelect.value">
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Apartment/Unit #" [disabled]="disableSelect.value">
             </mat-form-field>
-        </p>
-        <p>
+        <!-- </div>
+        <div> -->
             <mat-form-field>
                 <input matInput placeholder="City" [disabled]="disableSelect.value">
             </mat-form-field>
@@ -23,8 +25,8 @@
             <mat-form-field>
                 <input matInput placeholder="PIN Code" [disabled]="disableSelect.value">
             </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <!-- <p>
             <mat-form-field>
                 <input matInput placeholder="Home Phone">
             </mat-form-field>
@@ -40,6 +42,6 @@
                     Email is required
                 </mat-error>
             </mat-form-field>
-        </p>
-    </mat-card-content>
+        </p> -->
+    <!-- </mat-card-content> -->
 </form>

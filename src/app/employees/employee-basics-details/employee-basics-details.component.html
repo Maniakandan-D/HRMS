@@ -1,49 +1,40 @@
-<div fxLayout="wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch" fxFlexFill>
-  <mat-card fxFlex.gt-xs="90" class="mb15">
-        <form [formGroup]="basicForm" #basic="ngForm">
-          <mat-card-header>
-            <mat-card-title>Basics Details</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="">
-            <p>
-              <mat-form-field>
-                <input matInput placeholder="First name" formControlName="firstName" [class.is-invalid]="basic.submitted && basicForm.get('firstName')?.invalid">
-                <mat-error class="invalid-feedback"> First name is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Last name" formControlName="lastName" [class.is-invalid]="basic.submitted && basicForm.get('lastName')?.invalid">
-                <mat-error class="invalid-feedback">Last name is required</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="middle name">
-              </mat-form-field>
-            </p>
-            <p>
-              <mat-form-field>
-                <input matInput placeholder="Name(As per Aadhar)" formControlName="nameAadhar" [class.is-invalid]="basic.submitted && basicForm.get('nameAadhar')?.invalid">
-                <mat-error class="invalid-feedback">Aadhar name is required</mat-error>
-              </mat-form-field>
-            </p>
-          </mat-card-content>
-          <mat-card-content class="">
-              <p>
-                  <mat-form-field>
-                      <input matInput placeholder="Birth Date" [matDatepicker]="picker" (focus)="picker.open()"  formControlName="bithday" [class.is-invalid]="basic.submitted && basicForm.get('bithday')?.invalid">
-                      <mat-error class="invalid-feedback">Date is required</mat-error>
-                  </mat-form-field>
-                  <mat-datepicker #picker></mat-datepicker>
-              </p>
-              <p>
-                  <mat-radio-group id="radio">
-                  <mat-radio-button value="1">Father </mat-radio-button>
-                  <mat-radio-button value="2">Husband </mat-radio-button>
-                  </mat-radio-group>
-                  <mat-form-field>
-                  <input matInput placeholder="name" formControlName="Fathername" [class.is-invalid]="basic.submitted && basicForm.get('Fathername')?.invalid">
-                  <mat-error class="invalid-feedback">Father or Husband name is required</mat-error>
-                  </mat-form-field>
-              </p>
-          </mat-card-content>
-      </form>
-  </mat-card>
-</div>
+
+  <form [formGroup]="basicForm" #basic="ngForm">
+      <div>
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="firstName" [class.is-invalid]="basic.submitted && basicForm.get('firstName')?.invalid">
+            <mat-error class="invalid-feedback"> First name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="middle name">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last name" formControlName="lastName" [class.is-invalid]="basic.submitted && basicForm.get('lastName')?.invalid">
+            <mat-error class="invalid-feedback">Last name is required</mat-error>
+          </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Name(As per Aadhar)" formControlName="nameAadhar" [class.is-invalid]="basic.submitted && basicForm.get('nameAadhar')?.invalid">
+          <mat-error class="invalid-feedback">Aadhar name is required</mat-error>
+        </mat-form-field>
+      </div>
+    
+      <div>
+          <mat-form-field>
+            <input matInput placeholder="Birth Date" [matDatepicker]="picker" (focus)="picker.open()"  formControlName="bithday" [class.is-invalid]="basic.submitted && basicForm.get('bithday')?.invalid">
+            <mat-error class="invalid-feedback">Date is required</mat-error>
+          </mat-form-field>
+          <mat-datepicker #picker></mat-datepicker>
+      </div>
+        <!-- <p>
+            <mat-radio-group id="radio">
+            <mat-radio-button value="1">Father </mat-radio-button>
+            <mat-radio-button value="2">Husband </mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field>
+            <input matInput placeholder="name" formControlName="Fathername" [class.is-invalid]="basic.submitted && basicForm.get('Fathername')?.invalid">
+            <mat-error class="invalid-feedback">Father or Husband name is required</mat-error>
+            </mat-form-field>
+        </p> -->
+</form>

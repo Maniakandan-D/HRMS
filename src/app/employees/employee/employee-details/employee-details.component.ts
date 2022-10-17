@@ -36,6 +36,16 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeeService.fetchEmployee().subscribe((employee) => {
       this.employee = employee;
     });
+
+        //Shows the disabled attribute you can see in console
+        console.log((document.getElementById('fileInput') as any));
+        //But here it Shows the disabled attribute false can see in console
+        console.log((document.getElementById('fileInput') as any).disabled);
+        //Shows the disabled attribute you can see in console
+        console.log((document.getElementsByClassName('hover-text') as any));
+        //But here it Shows the disabled attribute false can see in console
+        console.log((document.getElementsByClassName('hover-text') as any)[0].disabled)
+      
   }
   addChildForm(name: string, group: FormGroup) {
     this.employeeForm.addControl(name, group);
