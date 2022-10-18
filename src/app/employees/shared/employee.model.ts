@@ -2,15 +2,17 @@ export class Employee {
     firstName: string;
     lastName: string;
     nameAadhar: string;
+    AadharNo:string;
     Fathername: string;
     bithday: string;
-    streetAddress : string;
-    apartmentUnit : string;
-    city : string;
-    state : string;
-    pincode : string;
-    email:  string;
-    mobilePhone: string;
+    PANno:string;
+    // streetAddress : string;
+    // apartmentUnit : string;
+    // city : string;
+    // state : string;
+    // pincode : string;
+    // email:  string;
+    // mobilePhone: string;
     spouseName : string;
     spouseEmployer : string;
     spousePhone : string;
@@ -32,6 +34,12 @@ export class Employee {
     motherDOB: string;
   }
 
-  export class EmployeeReference extends Employee{
-
+  export class Communication {
+    streetAddress : string;
+    apartmentUnit : string;
+    city : string;
+    state : string;
+    pincode : string;
+    email:  string;
+    mobilePhone: string;
   }

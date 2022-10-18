@@ -1,70 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { TableDataSource, ValidatorService } from 'angular4-material-table';
+
+import { PersonValidatorService } from '../shared/person-validator.service'; 
+import { Person } from '../shared/person';
 
 @Component({
   selector: 'app-employee-add-edit',
+  providers: [
+    {provide: ValidatorService, useClass: PersonValidatorService }
+  ],
   templateUrl: './employee-add-edit.component.html',
   styleUrls: ['./employee-add-edit.component.scss']
 })
 export class EmployeeAddEditComponent implements OnInit {
-  userTable: FormGroup;
-  control: FormArray;
-  mode: boolean;
-  touchedRows: any;
-  constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
-    this.touchedRows = [];
-    this.userTable = this.fb.group({
-      tableRows: this.fb.array([])
-    });
-    this.addRow();
-  }
-  ngAfterOnInit() {
-    this.control = this.userTable.get('tableRows') as FormArray;
-  }
+  constructor(private personValidator: ValidatorService) { }
 
-  initiateForm(): FormGroup {
-    return this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.email, Validators.required]],
-      dob: ['', [Validators.required]],
-      bloodGroup: [''],
-      mobNumber: ['', [Validators.required, Validators.maxLength(10)]],
-      isEditable: [true]
-    });
-  }
+  displayedColumns = ['name', 'age', 'actionsColumn'];
 
-  addRow() {
-    const control =  this.userTable.get('tableRows') as FormArray;
-    control.push(this.initiateForm());
-  }
+  @Input() personList = [ 
+    { name: 'Mark', age: 15 },
+    { name: 'Brad', age: 50 },
+    ] ;
+  @Output() personListChange = new EventEmitter<Person[]>();
 
-  deleteRow(index: number) {
-    const control =  this.userTable.get('tableRows') as FormArray;
-    control.removeAt(index);
-  }
+  dataSource: TableDataSource<Person>;
 
-  editRow(group: FormGroup) {
-    group.get('isEditable').setValue(true);
-  }
 
-  doneRow(group: FormGroup) {
-    group.get('isEditable').setValue(false);
-  }
+  ngOnInit() {
+    this.dataSource = new TableDataSource<any>(this.personList, Person, this.personValidator);
 
-  saveUserDetails() {
-    console.log(this.userTable.value);
-  }
-
-  get getFormControls() {
-    const control = this.userTable.get('tableRows') as FormArray;
-    return control;
-  }
-
-  submitForm() {
-    const control = this.userTable.get('tableRows') as FormArray;
-    this.touchedRows = control.controls.filter(row => row.touched).map(row => row.value);
-    console.log(this.touchedRows);
+    this.dataSource.datasourceSubject.subscribe(personList => this.personListChange.emit(personList));
   }
 }

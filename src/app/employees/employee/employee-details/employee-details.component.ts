@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import { Employee } from '../../shared/employee.model';
+import { Communication, Employee } from '../../shared/employee.model';
 import { EmployeeService } from '../../shared/employee.service';
 
 
@@ -21,9 +21,14 @@ import { EmployeeService } from '../../shared/employee.service';
 
 export class EmployeeDetailsComponent implements OnInit {
   employee : Employee;
-  employeeForm : FormGroup =this._formBuilder.group({});
+  communication: Communication;
+  basicForm : FormGroup =this._formBuilder.group({});
+  communicationForm: FormGroup =this._formBuilder.group({});
   isLinear = true;
+  isEditable = false;
   isSubmitted: boolean;
+  public selectedIndex: number;
+  public iconColor: string;
   constructor(private _formBuilder: FormBuilder, private employeeService: EmployeeService) { }
 
   PersonalForm : FormGroup =this._formBuilder.group({});
@@ -36,34 +41,54 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeeService.fetchEmployee().subscribe((employee) => {
       this.employee = employee;
     });
-
-        //Shows the disabled attribute you can see in console
-        console.log((document.getElementById('fileInput') as any));
-        //But here it Shows the disabled attribute false can see in console
-        console.log((document.getElementById('fileInput') as any).disabled);
-        //Shows the disabled attribute you can see in console
-        console.log((document.getElementsByClassName('hover-text') as any));
-        //But here it Shows the disabled attribute false can see in console
-        console.log((document.getElementsByClassName('hover-text') as any)[0].disabled)
+    this.employeeService.fetchCommunication().subscribe((communication) => {
+      this.communication = communication;
+    });
       
   }
-  addChildForm(name: string, group: FormGroup) {
-    this.employeeForm.addControl(name, group);
+  addbasicForm(name: string, group: FormGroup) {
+    this.basicForm.addControl(name, group);
   }
+
+  addcommunicationForm(name: string, group: FormGroup) {
+    this.communicationForm.addControl(name, group);
+  }
+
   onValueChange(changes: Partial<Employee>) {
     this.employee = { ...this.employee, ...changes };
   }
+  onValueChanges(changes: Partial<Communication>) {
+    this.communication = { ...this.communication, ...changes };
+  }
 
-  onSubmit(): void{
+  basicFormSubmit(): void{
     // this.isSubmitted = true;
     // if(!this.employeeForm.valid) {
     //   return;
     // }
     
     this.employeeService.saveEmployee(this.employee).subscribe(() => {
-      this.employeeForm.enable();
+      this.basicForm.enable();
       // this.employeeForm.reset();
     });
+  }
+  communicationFormSubmit(): void{
+    // this.isSubmitted = true;
+    // if(!this.employeeForm.valid) {
+    //   return;
+    // }
+    
+    this.employeeService.saveCommunication(this.communication).subscribe(() => {
+      this.communicationForm.enable();
+      // this.employeeForm.reset();
+    });
+  }
+
+stepChange(event: { selectedIndex: number; }){
+    this.selectedIndex= event.selectedIndex;
+    // if(event.selectedIndex === 0){
+    //     this.iconColor = 'pink';
+    // }
   }
 }
 

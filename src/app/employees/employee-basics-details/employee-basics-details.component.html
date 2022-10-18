@@ -1,32 +1,80 @@
 
   <form [formGroup]="basicForm" #basic="ngForm">
-      <div>
-          <mat-form-field>
-            <input matInput placeholder="First name" formControlName="firstName" [class.is-invalid]="basic.submitted && basicForm.get('firstName')?.invalid">
-            <mat-error class="invalid-feedback"> First name is required</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="middle name">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Last name" formControlName="lastName" [class.is-invalid]="basic.submitted && basicForm.get('lastName')?.invalid">
-            <mat-error class="invalid-feedback">Last name is required</mat-error>
-          </mat-form-field>
+      <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
+          <div class="mb10"fxFlex="15">
+            <mat-form-field>
+              <input matInput placeholder="First name" formControlName="firstName" [class.is-invalid]="basic.submitted && basicForm.get('firstName')?.invalid">
+              <mat-error class="invalid-feedback"> First name is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="15">
+            <mat-form-field>
+              <input matInput placeholder="middle name">
+            </mat-form-field>
+          </div>
+          <div fxFlex="15">
+            <mat-form-field>
+              <input matInput placeholder="Last name" formControlName="lastName" [class.is-invalid]="basic.submitted && basicForm.get('lastName')?.invalid">
+              <mat-error class="invalid-feedback">Last name is required</mat-error>
+            </mat-form-field>
+          </div>
       </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Name(As per Aadhar)" formControlName="nameAadhar" [class.is-invalid]="basic.submitted && basicForm.get('nameAadhar')?.invalid">
-          <mat-error class="invalid-feedback">Aadhar name is required</mat-error>
-        </mat-form-field>
+      <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
+        <div class="mb10"fxFlex="15">
+          <mat-form-field>
+            <input matInput placeholder="Name(As per Aadhar)" formControlName="nameAadhar" [class.is-invalid]="basic.submitted && basicForm.get('nameAadhar')?.invalid">
+            <mat-error class="invalid-feedback">Aadhar name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="15">
+          <mat-form-field>
+            <input matInput placeholder="Aadhar Number" formControlName="AadharNo" [class.is-invalid]="basic.submitted && basicForm.get('AadharNo')?.invalid">
+            <mat-error class="invalid-feedback">Aadhar number is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="15">
+          <mat-form-field class="columns">
+              <mat-label *ngIf="aadharFiles; else newFile">{{aadharFiles.item(0).name}}</mat-label>
+              <ng-template #newFile>
+                  <mat-label>Aadhar card</mat-label>
+              </ng-template>
+              <input matInput disabled>
+              <button  mat-icon-button matSuffix (click)="fileInput.click()">
+                  <mat-icon class="material-icons">attach_file</mat-icon>
+              </button>
+              <input hidden (change)="aadharFile($event)" #fileInput type="file" id="file">
+          </mat-form-field>
+        </div>
       </div>
-    
-      <div>
+      <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
+        <div class="mb10"fxFlex="15">
           <mat-form-field>
             <input matInput placeholder="Birth Date" [matDatepicker]="picker" (focus)="picker.open()"  formControlName="bithday" [class.is-invalid]="basic.submitted && basicForm.get('bithday')?.invalid">
             <mat-error class="invalid-feedback">Date is required</mat-error>
           </mat-form-field>
           <mat-datepicker #picker></mat-datepicker>
+        </div>
+        <div fxFlex="15">
+          <mat-form-field>
+            <input matInput placeholder="PAN Number" formControlName="PANno" [class.is-invalid]="basic.submitted && basicForm.get('PANno')?.invalid">
+            <mat-error class="invalid-feedback">PAN number is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="15">
+          <mat-form-field class="columns">
+            <mat-label *ngIf="selectedFiles; else panFile">{{selectedFiles.item(0).name}}</mat-label>
+            <ng-template #panFile>
+              <mat-label>PAN card</mat-label>
+            </ng-template>
+            <input matInput disabled>
+            <button  mat-icon-button matSuffix (click)="filePAN.click()">
+                <mat-icon class="material-icons">attach_file</mat-icon>
+            </button>
+            <input hidden (change)="selectFile($event)" #filePAN type="file" id="file">
+          </mat-form-field>
+        </div>
       </div>
+ </form>     
         <!-- <p>
             <mat-radio-group id="radio">
             <mat-radio-button value="1">Father </mat-radio-button>
@@ -37,4 +85,44 @@
             <mat-error class="invalid-feedback">Father or Husband name is required</mat-error>
             </mat-form-field>
         </p> -->
-</form>
+<!-- 
+          <input type="file" class="file-input"
+          (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload">
+
+    {{fileName || "No file uploaded yet."}}
+
+      <button mat-mini-fab color="primary" class="upload-btn"
+        (click)="fileUpload.click()">
+          <mat-icon>attach_file</mat-icon>
+      </button>
+  </div>
+
+<input type="file" placeholder="PAN card" class="file-input"
+       [accept]="requiredFileType"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+
+   {{fileName || "No file uploaded yet."}}
+
+    <button mat-mini-fab color="primary" class="upload-btn"
+      (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+
+    </button>
+
+</div>
+
+<div class="progress">
+
+  <mat-progress-bar class="progress-bar" mode="determinate"
+                    [value]="uploadProgress" *ngIf="uploadProgress">
+
+  </mat-progress-bar>
+
+  <mat-icon class="cancel-upload" (click)="cancelUpload()" 
+            *ngIf="uploadProgress">delete_forever</mat-icon>
+
+</div> -->
