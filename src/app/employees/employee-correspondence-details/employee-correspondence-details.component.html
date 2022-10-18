@@ -1,116 +1,77 @@
-
-
 <form [formGroup]="correspondenceForm" #correspondence="ngForm">
-        <!-- <mat-card-title>communication Details</mat-card-title> -->
-        <div>
-            <mat-card-header>
-                <mat-card-title>Contact</mat-card-title>
-            </mat-card-header>
+    <div>
+        <mat-card-header>
+            <mat-card-title>Contact</mat-card-title>
+        </mat-card-header>
+    </div>
+    <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
+        <div class="mb10"fxFlex="15">
+            <mat-form-field>
+                <input matInput placeholder="Home Phone">
+            </mat-form-field>
         </div>
-        <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
-            <div class="mb10"fxFlex="15">
-                <mat-form-field>
-                    <input matInput placeholder="Home Phone">
-                </mat-form-field>
-            </div>
-            <div fxFlex="15">
-                <mat-form-field>
-                    <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('mobilePhone')?.invalid">
-                    <mat-error class="invalid-feedback">
-                        Mobile number is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div fxFlex="15">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email" formControlName="email"  [class.is-invalid]="correspondence.submitted && correspondenceForm.get('email')?.invalid">
-                    <mat-error class="invalid-feedback">
-                        Email is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
+        <div fxFlex="15">
+            <mat-form-field>
+                <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('mobilePhone')?.invalid">
+                <mat-error class="invalid-feedback">
+                    Mobile number is required
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div>
-            <mat-card-header>
-                <mat-card-title>Correspondence Address</mat-card-title>
-            </mat-card-header>
+        <div fxFlex="15">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" formControlName="email"  [class.is-invalid]="correspondence.submitted && correspondenceForm.get('email')?.invalid">
+                <mat-error class="invalid-feedback">
+                    Email is required
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
-            <div class="mb10"fxFlex="15">
-                <mat-form-field>
-                    <input matInput placeholder="Street Address" formControlName="streetAddress" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
-                    <mat-error class="invalid-feedback">
-                        Street address is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div fxFlex="15">
-                <mat-form-field>
-                    <input matInput placeholder="Apartment/Unit #" formControlName="apartmentUnit" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
-                    <mat-error class="invalid-feedback">
-                        Apartment/Unit is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div fxFlex="15">
-                <mat-form-field>
-                    <input matInput placeholder="City" formControlName="city" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
-                    <mat-error class="invalid-feedback">
-                        City is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div fxFlex="15">
-                <mat-form-field>
-                    <input matInput placeholder="State" formControlName="state" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
-                    <mat-error class="invalid-feedback">
-                        State is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div fxFlex="15">
-                <mat-form-field>
-                    <input matInput placeholder="PIN Code" formControlName="pincode" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
-                    <mat-error class="invalid-feedback">
-                        PIN code is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
+    </div>
+    <div>
+        <mat-card-header>
+            <mat-card-title>Correspondence Address</mat-card-title>
+        </mat-card-header>
+    </div>
+    <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
+        <div class="mb10"fxFlex="15">
+            <mat-form-field>
+                <input matInput placeholder="Street Address" formControlName="streetAddress" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
+                    Street address is required
+                </mat-error>
+            </mat-form-field>
         </div>
-    </form>
-        <!-- <div> -->
-            
-            
-        <!-- </div>
-        <div> -->
-            
-            
-            
-        <!-- </div>
-        <div class="mat-form-field--inline">
-            <div>
-                <mat-form-field>
-                    <input matInput  placeholder="What's your name?">
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <input matInput  placeholder="hello">
-                </mat-form-field>
-            </div>
-        </div> -->
-        <!-- <button mat-raised-button color="primary" (click)="onClick($event)">
-            <mat-icon>add</mat-icon>
-                {{chooseLabel}}
-        </button>
-        <input #fileUpload type="file" class="input_fileupload--hidden" (input)="onInput($event)"
-            (change)="onFileSelected($event)"
-            [(ngModel)]="inputFileName" [accept]="accept">
-
-        <div *ngFor="let f of files">
-            <span>{{f.name}}</span>
-            <button mat-icon-button color="primary"  [attr.title]="deleteButtonLabel?deleteButtonLabel:null"   (click)="removeFile($event,f)">
-                <mat-icon>{{deleteButtonIcon}}</mat-icon>
-            </button>
-        </div> -->
-
+        <div fxFlex="15">
+            <mat-form-field>
+                <input matInput placeholder="Apartment/Unit #" formControlName="apartmentUnit" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
+                    Apartment/Unit is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxFlex="15">
+            <mat-form-field>
+                <input matInput placeholder="City" formControlName="city" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
+                    City is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxFlex="15">
+            <mat-form-field>
+                <input matInput placeholder="State" formControlName="state" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
+                    State is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxFlex="15">
+            <mat-form-field>
+                <input matInput placeholder="PIN Code" formControlName="pincode" [class.is-invalid]="correspondence.submitted && correspondenceForm.get('streetAddress')?.invalid">
+                <mat-error class="invalid-feedback">
+                    PIN code is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</form>

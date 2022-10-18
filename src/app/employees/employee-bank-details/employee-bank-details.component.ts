@@ -42,7 +42,7 @@ export class EmployeeBankDetailsComponent implements OnInit {
 
     this.formReady.emit(this.bankForm);
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void{
     this.subscription.unsubscribe();
   }
 }

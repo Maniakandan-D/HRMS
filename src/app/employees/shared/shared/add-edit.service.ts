@@ -40,15 +40,15 @@ export class AddEditService {
   }
   
   addReference(referenceDetails: ReferenceDetails): Observable<ReferenceDetails> {
-    return this.http.post<ReferenceDetails>(`${this.apiEndpoint}`, referenceDetails);
+    return this.http.post<ReferenceDetails>(`${this.apiEndpointName}`, referenceDetails);
   }
 
   updateReference(referenceDetails: ReferenceDetails): any{
-    return this.http.put(`${this.apiEndpoint}/${referenceDetails.id}`, referenceDetails);
+    return this.http.put(`${this.apiEndpointName}/${referenceDetails.id}`, referenceDetails);
   }
 
   deleteReference(id:string): Observable<ReferenceDetails>{
-    return this.http.delete<ReferenceDetails>(`${this.apiEndpoint}/${id}`).pipe(map((res: any ) =>{
+    return this.http.delete<ReferenceDetails>(`${this.apiEndpointName}/${id}`).pipe(map((res: any ) =>{
     return res
     }));
   }

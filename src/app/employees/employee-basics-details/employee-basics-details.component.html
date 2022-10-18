@@ -1,5 +1,4 @@
-
-  <form [formGroup]="basicForm" #basic="ngForm">
+ <form [formGroup]="basicForm" #basic="ngForm">
       <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
           <div class="mb10"fxFlex="15">
             <mat-form-field>
@@ -74,55 +73,4 @@
           </mat-form-field>
         </div>
       </div>
- </form>     
-        <!-- <p>
-            <mat-radio-group id="radio">
-            <mat-radio-button value="1">Father </mat-radio-button>
-            <mat-radio-button value="2">Husband </mat-radio-button>
-            </mat-radio-group>
-            <mat-form-field>
-            <input matInput placeholder="name" formControlName="Fathername" [class.is-invalid]="basic.submitted && basicForm.get('Fathername')?.invalid">
-            <mat-error class="invalid-feedback">Father or Husband name is required</mat-error>
-            </mat-form-field>
-        </p> -->
-<!-- 
-          <input type="file" class="file-input"
-          (change)="onFileSelected($event)" #fileUpload>
-
-        <div class="file-upload">
-
-    {{fileName || "No file uploaded yet."}}
-
-      <button mat-mini-fab color="primary" class="upload-btn"
-        (click)="fileUpload.click()">
-          <mat-icon>attach_file</mat-icon>
-      </button>
-  </div>
-
-<input type="file" placeholder="PAN card" class="file-input"
-       [accept]="requiredFileType"
-       (change)="onFileSelected($event)" #fileUpload>
-
-<div class="file-upload">
-
-   {{fileName || "No file uploaded yet."}}
-
-    <button mat-mini-fab color="primary" class="upload-btn"
-      (click)="fileUpload.click()">
-        <mat-icon>attach_file</mat-icon>
-
-    </button>
-
-</div>
-
-<div class="progress">
-
-  <mat-progress-bar class="progress-bar" mode="determinate"
-                    [value]="uploadProgress" *ngIf="uploadProgress">
-
-  </mat-progress-bar>
-
-  <mat-icon class="cancel-upload" (click)="cancelUpload()" 
-            *ngIf="uploadProgress">delete_forever</mat-icon>
-
-</div> -->
+ </form>

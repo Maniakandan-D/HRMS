@@ -1,7 +1,7 @@
 <article class="table-header">
 
   <div>
-    <button class="button-add-row" mat-button (click)="addRow()">Add</button>
+    <button class="button-add-row" mat-button (click)="addRow()">Add Row</button>
   </div>
 </article>
 <table mat-table [dataSource]="dataSource">
@@ -13,13 +13,11 @@
           <button mat-button (click)="element.isEdit = !element.isEdit"> Edit </button>
           <button mat-button class="button-remove" (click)="removeRow(element.id)"> Delete </button>
         </div>
-        <span *ngSwitchCase="'date'"> {{ element[col.key] | date: 'mediumDate' }} </span>
-        <span *ngSwitchDefault> {{ element[col.key] }} </span>
       </div>
       <div [ngSwitch]="col.type" *ngIf="element.isEdit">
         <div class="btn-edit" *ngSwitchCase="'isEdit'">
           <button
-            mat-button (click)="editRow(element)" [disabled]="disableSubmit(element.id)"> Update
+            mat-button (click)="editRow(element)" [disabled]="disableSubmit(element.id)"> Save
           </button>
         </div>
         <mat-form-field class="form-input" *ngSwitchCase="'select'" appearance="fill">

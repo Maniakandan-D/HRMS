@@ -1,12 +1,2 @@
-<div class="col-md-6 container">
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()"> 
-        <div class="form-group">
-            <img [src]="imageSrc ? imageSrc : 'https://www.w3schools.com/howto/img_avatar.png'" [src]="imageSrc">
-            <!-- //*ngIf="imageSrc"  -->
-        </div>
-        <div *ngIf="f.image.touched && f.image.invalid" class="alert alert-danger">
-            <div *ngIf="f.image.errors.required">Image is required</div>
-        </div>
-        <input formControlName="image" type="file" name="image" class="form-control" (change)="onFileChange($event)" id="image">
-    </form>
-  </div>
+<img height="100px" width="100px" [src]="_d.bypassSecurityTrustUrl(imgsrc)">
+<input mat-input type="file" (change)="fileChange($event)">

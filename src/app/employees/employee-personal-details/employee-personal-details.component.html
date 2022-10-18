@@ -1,6 +1,4 @@
 <div class="table-wrapper">
-
-
   <form (submit)="onSubmit()" #familyForm="ngForm">
       <mat-form-field>
           <input matInput placeholder="Name" name="name" required [(ngModel)]="familyData.name">
@@ -11,17 +9,11 @@
           <mat-option *ngFor="let relationshipName of relationshipDetails" [value]="relationshipName">{{relationshipName.relationShipName}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- <mat-form-field>
-          <input matInput placeholder="Relationship" name="relationship" required [(ngModel)]="familyData.relationship">
-      </mat-form-field> -->
       <mat-form-field>
         <input matInput placeholder="Date of Birth" [matDatepicker]="picker" (focus)="picker.open()"  required [(ngModel)]="familyData.dob">
     </mat-form-field>
     <mat-datepicker #picker></mat-datepicker>
-      <!-- <mat-form-field>
-          <input matInput placeholder="Date of Birth" name="dob" required [(ngModel)]="familyData.dob">
-      </mat-form-field> -->
-      <mat-form-field>
+    <mat-form-field>
         <input matInput placeholder="Mobile Number" name="mobileNo" required [(ngModel)]="familyData.mobileNo">
     </mat-form-field>
       <ng-container *ngIf="isEditMode; else elseTemplate">
