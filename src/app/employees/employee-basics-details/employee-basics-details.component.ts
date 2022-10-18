@@ -2,7 +2,6 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { finalize } from 'rxjs/operators';
 import { Employee} from '../shared/employee.model';
 
 
