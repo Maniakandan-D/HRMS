@@ -6,13 +6,6 @@ export class Employee {
     Fathername: string;
     bithday: string;
     PANno:string;
-    // streetAddress : string;
-    // apartmentUnit : string;
-    // city : string;
-    // state : string;
-    // pincode : string;
-    // email:  string;
-    // mobilePhone: string;
     spouseName : string;
     spouseEmployer : string;
     spousePhone : string;

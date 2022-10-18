@@ -60,7 +60,6 @@ import { EmployeePermanentDetailsComponent } from './employee-permanent-details/
 import { EmployeeService } from './shared/employee.service';
 import { FamilyDetailsService } from './shared/familyDetails.service';
 import { AddEditComponent } from './shared/add-edit/add-edit.component';
-import { DragableColumnDirective } from './directive/Dragable-column-directive/dragable-column.directive';
 import { EmployeeImageDetailsComponent } from './employee-image-details/employee-image-details.component';
 
 
@@ -127,7 +126,6 @@ import { EmployeeImageDetailsComponent } from './employee-image-details/employee
         EmployeeCorrespondenceDetailsComponent,
         EmployeePermanentDetailsComponent,
         AddEditComponent,
-        DragableColumnDirective,
         EmployeeImageDetailsComponent
     ],
     providers:[

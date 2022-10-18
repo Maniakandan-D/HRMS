@@ -60,37 +60,5 @@
         "relationship": "Brother",
         "birthDate": "03-06-1996"
       }
-    ],
-    "ReferenceDetails": [
-      {
-        "id": "634954868657162c016b110d",
-        "name": "Dunn",
-        "mobileNo": "+1 (862) 584-3890",
-        "relationship": "Brother"
-      },
-      {
-        "id": "63495486dd9d3435ae5bbb6e",
-        "name": "Burris",
-        "mobileNo": "+1 (870) 469-2447",
-        "relationship": "Brother"
-      },
-      {
-        "id": "6349548695d6f92244bc44e8",
-        "name": "Wendi",
-        "mobileNo": "+1 (915) 458-3024",
-        "relationship": "Brother"
-      },
-      {
-        "id": "63495486a4158473e9a07d9f",
-        "name": "Lang",
-        "mobileNo": "+1 (820) 437-2781",
-        "relationship": "Father"
-      },
-      {
-        "id": "6349548622525e578f9a721d",
-        "name": "Burks",
-        "mobileNo": "+1 (865) 527-2329",
-        "relationship": "Brother"
-      }
     ]
   }

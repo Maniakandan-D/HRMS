@@ -61,5 +61,10 @@ export const ReferenceDetailsColumns = [
     type: 'select',
     label: 'Relationship',
     required: true,
+  },
+  {
+    key: 'isEdit',
+    type: 'isEdit',
+    label: '',
   }
 ];

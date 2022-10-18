@@ -1,4 +1,4 @@
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -11,17 +11,8 @@ import { Employee} from '../shared/employee.model';
   styleUrls: ['./employee-basics-details.component.scss']
 })
 export class EmployeeBasicsDetailsComponent implements OnInit {
-  // @Input()
-  // requiredFileType:string;
-
-  // fileName = '';
-  // uploadProgress:number;
-  // uploadSub: Subscription;
-
- 
   @Input()
   employee: Employee;
-  
 
   @Output()
   valueChange = new EventEmitter<Partial<Employee>>();
@@ -45,7 +36,7 @@ export class EmployeeBasicsDetailsComponent implements OnInit {
   get PANno() { return this.basicForm.get('PANno'); }
 
   
-  constructor(private fb: FormBuilder,private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.basicForm = this.fb.group({
@@ -72,48 +63,16 @@ export class EmployeeBasicsDetailsComponent implements OnInit {
 
     this.formReady.emit(this.basicForm);
   }
-  ngOnDestroy() {
+
+  ngOnDestroy(): void  {
     this.subscription.unsubscribe();
   }
-  aadharFile(event: { target: { files: any; }; }) {
+
+  aadharFile(event: { target: { files: any; }; }): void  {
     this.aadharFiles = event.target.files;
   }
   
-  selectFile(event: { target: { files: any; }; }) {
+  selectFile(event: { target: { files: any; }; }): void  {
     this.selectedFiles = event.target.files;
   }
-
-
-  // onFileSelected(event: { target: { files: File[]; }; }) {
-  //   const file:File = event.target.files[0];
-  
-  //   if (file) {
-  //       this.fileName = file.name;
-  //       const formData = new FormData();
-  //       formData.append("thumbnail", file);
-
-  //       const upload$ = this.http.post("/api/thumbnail-upload", formData, {
-  //           reportProgress: true,
-  //           observe: 'events'
-  //       })
-  //       .pipe(
-  //           finalize(() => this.reset())
-  //       );
-      
-  //       this.uploadSub = upload$.subscribe(event => {
-  //         if (event.type == HttpEventType.UploadProgress) {
-  //           this.uploadProgress = Math.round(100 * (event.loaded / event.total));
-  //         }
-  //       })
-  //   }
-  // }
-  //   cancelUpload() {
-  //     this.uploadSub.unsubscribe();
-  //     this.reset();
-  //   }
-
-  //   reset() {
-  //     this.uploadProgress = null;
-  //     this.uploadSub = null;
-  //   }
 }

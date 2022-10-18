@@ -1,21 +1,17 @@
-<!-- " -->
-<mat-vertical-stepper [linear]="isLinear"  #stepper [selectedIndex]="0" (selectionChange)="stepChange($event)" orientation="vertical"> 
+
+<mat-vertical-stepper [linear]="isLinear"  #stepper [selectedIndex]="0" (selectionChange)="stepChange($event)"> 
   <mat-step [stepControl]="basicForm" errorMessage="Basic Details is required.">
     <ng-template matStepLabel>Basic Details</ng-template>
     
     <form *ngIf="employee" [formGroup]="basicForm" (ngSubmit)="basicForm.valid && basicFormSubmit()">
       <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=5% fxLayoutAlign="space-around stretch">
         <mat-card fxFlex.gt-xs=15%>
-          <mat-card-content class="">
-            <!-- <app-employee-image-details></app-employee-image-details> -->
-            <app-employee-review-details></app-employee-review-details>
+          <mat-card-content>
+            <app-employee-image-details></app-employee-image-details>
             </mat-card-content>
         </mat-card>
         <mat-card fxFlex.gt-xs=80%>
-          <mat-card-content class="">
-            <!-- <mat-card-header>
-              <mat-card-title>Basics Details</mat-card-title>
-            </mat-card-header> -->
+          <mat-card-content>
               <app-employee-basics-details [employee]="employee" (formReady)="addbasicForm('basics', $event)"
               (valueChange)="onValueChange($event)"></app-employee-basics-details>
           </mat-card-content>
@@ -66,7 +62,6 @@
         </mat-card>
       </div> -->
       <div class="next">
-        <button mat-raised-button color="accent"  class="btn1" matStepperPrevious>Back</button>
         <button type="submit" color="primary"  mat-raised-button  matStepperNext>Save & Continue</button>
       </div>
     </form>
@@ -79,9 +74,6 @@
         <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=8% fxLayoutAlign="space-around stretch">
           <mat-card fxFlex.gt-xs=100%>
             <mat-card-content>
-              <!-- <mat-card-header>
-                <mat-card-title>Communication Details</mat-card-title>
-              </mat-card-header> -->
                 <app-employee-correspondence-details [communication]="communication"
                 (formReady)="addcommunicationForm('correspondence', $event)"
                 (valueChange)="onValueChanges($event)"></app-employee-correspondence-details>
@@ -117,7 +109,7 @@
   </mat-step>
   <mat-step [stepControl]="" errorMessage="Personal Details is required.">
     <ng-template matStepLabel>Previous Job Details</ng-template>
-    <app-add-edit></app-add-edit>
+      <app-add-edit></app-add-edit>
     <div class="next">
       <button mat-raised-button color="accent"  class="btn1" matStepperPrevious>Back</button>
       <button type="submit" color="primary" mat-raised-button  matStepperNext>Save & Continue</button>

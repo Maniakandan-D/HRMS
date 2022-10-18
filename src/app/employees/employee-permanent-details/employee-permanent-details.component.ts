@@ -1,23 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { Subscription } from 'rxjs';
-import { Employee } from '../shared/employee.model';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || isSubmitted) //|| control.touched 
-    );
-  }
-}
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -26,11 +8,10 @@ class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./employee-permanent-details.component.scss']
 })
 export class EmployeePermanentDetailsComponent implements OnInit {
-  matcher = new MyErrorStateMatcher();
-
+  disableSelect = new FormControl(false);
   constructor() { }
 
   ngOnInit(): void {
   }
-  disableSelect = new FormControl(false);
+  
 }

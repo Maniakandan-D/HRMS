@@ -28,7 +28,7 @@ export class EmployeeDetailsComponent implements OnInit {
   isEditable = false;
   isSubmitted: boolean;
   public selectedIndex: number;
-  public iconColor: string;
+
   constructor(private _formBuilder: FormBuilder, private employeeService: EmployeeService) { }
 
   PersonalForm : FormGroup =this._formBuilder.group({});
@@ -44,20 +44,21 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeeService.fetchCommunication().subscribe((communication) => {
       this.communication = communication;
     });
-      
   }
-  addbasicForm(name: string, group: FormGroup) {
+
+  addbasicForm(name: string, group: FormGroup): void{
     this.basicForm.addControl(name, group);
   }
 
-  addcommunicationForm(name: string, group: FormGroup) {
+  addcommunicationForm(name: string, group: FormGroup): void{
     this.communicationForm.addControl(name, group);
   }
 
-  onValueChange(changes: Partial<Employee>) {
+  onValueChange(changes: Partial<Employee>): void{
     this.employee = { ...this.employee, ...changes };
   }
-  onValueChanges(changes: Partial<Communication>) {
+
+  onValueChanges(changes: Partial<Communication>): void{
     this.communication = { ...this.communication, ...changes };
   }
 
@@ -84,11 +85,7 @@ export class EmployeeDetailsComponent implements OnInit {
     });
   }
 
-stepChange(event: { selectedIndex: number; }){
-    this.selectedIndex= event.selectedIndex;
-    // if(event.selectedIndex === 0){
-    //     this.iconColor = 'pink';
-    // }
+  stepChange(event: { selectedIndex: number; }): void{
+      this.selectedIndex= event.selectedIndex;
   }
 }
-

@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -9,49 +8,14 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./employee-image-details.component.scss']
 })
 export class EmployeeImageDetailsComponent implements OnInit {
-  imageSrc: string;
-  url:any;
-  constructor(private http: HttpClient) { }
+  imgsrc = 'https://www.w3schools.com/howto/img_avatar.png';
 
+  constructor( public _d: DomSanitizer ) { }
   ngOnInit(): void {
   }
-  addForm = new FormGroup({
-    image: new FormControl('', Validators.required),
-    imageSrc: new FormControl('', Validators.required)
-    });
-      
-    get f(){
-      return this.addForm.controls;
-    }
-     
-    onFileChange(event: { target: { files: string | any[]; }; }) {
-    const reader = new FileReader();
-    
-    if(event.target.files && event.target.files.length) {
-      const [image] = event.target.files;
-      reader.readAsDataURL(image);
-    
-      reader.onload = () => {
-    
-    this.imageSrc = reader.result as string;
-    
-    this.addForm.patchValue({
-      imageSrc: reader.result
-    });
-    
-      };
-    
-    }
-    }
-    
-    onSubmit(){
-    console.log(this.addForm.value);
-    this.http.post('http://localhost/codeigniter4_rest_api/student/upload', this.addForm.value)
-      .subscribe(res => {
-    console.log(res);
-    alert('Uploaded Successfully.');
-    })
-    }
 
-  
+  fileChange(e: { srcElement: { files: any[]; }; }): void  {
+    const file = e.srcElement.files[0]; 
+    this.imgsrc = window.URL.createObjectURL(file); 
+  }
 }
