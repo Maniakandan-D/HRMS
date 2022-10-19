@@ -13,4 +13,21 @@ export const childRoutes = [
       ),
     data: { icon: 'assignment', text: 'EmployeeDetails' }
   },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('src/app/users/users.module').then(
+        m => m.UsersModule
+      ),
+    data: { icon: 'table_chart', text: 'Users' }
+  },
+
+  {
+    path: 'password',
+    loadChildren: () =>
+      import('src/app/password/password.module').then(
+        m => m.PasswordModule
+      ),
+    data: { icon: 'assignment', text: 'Password' }
+  },
 ];
