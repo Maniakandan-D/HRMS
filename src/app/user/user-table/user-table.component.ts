@@ -74,8 +74,7 @@ export class UserTableComponent implements OnInit {
       next:(res: any)=>{
        this.dataSource=new MatTableDataSource(res);
        this.dataSource.paginator=this.paginator;
-        this.dataSource.sort=this.sort;
-     
+       this.dataSource.sort=this.sort;
       },
       error:(err)=>{
         alert("something went wrong");
@@ -93,11 +92,10 @@ export class UserTableComponent implements OnInit {
   }
 
 
-isAllSelected() {
-  const numSelected = this.selection.selected.length;
-  const numRows = this.dataSource.data.length;
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
     return numSelected === numRows;
-  
 }
 
 // activateSelectedUsers() {

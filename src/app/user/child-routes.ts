@@ -21,7 +21,6 @@ export const childRoutes = [
       ),
     data: { icon: 'table_chart', text: 'Users' }
   },
-
   {
     path: 'register',
     loadChildren: () =>
@@ -30,6 +29,7 @@ export const childRoutes = [
       ),
     data: { icon: 'assignment', text: 'Password' }
   },
+  
   {
     path: 'user',
     loadChildren: () =>

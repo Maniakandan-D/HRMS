@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./user/user.module').then((m) => m.UserModule),
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
   },
   {
     path: 'login',
@@ -16,9 +16,12 @@ const routes: Routes = [
       import('./login/login.module').then((m) => m.LoginModule),
   },
   {
-    path: 'signup',
+    path: 'register/:id',
     loadChildren: () =>
-      import('./signup/signup.module').then((m) => m.SignupModule),
+      import('src/app/password/password.module').then(
+        m => m.PasswordModule
+      ),
+    data: { icon: 'assignment', text: 'Password' }
   },
   {
     path: '**',

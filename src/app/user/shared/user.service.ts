@@ -33,7 +33,7 @@ export class UserService {
   }
 
   registerUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiEndpoint}`, user);
+    return this.http.post<User>(`${this.apiEndpoint}/users`, user);
   }
 
   deleteUser(id: string): Observable<boolean> {
