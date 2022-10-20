@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { childRoutes } from 'src/app/shared/child-routes';
+import { childRoutes } from 'src/app/user/child-routes';
 
 
 
