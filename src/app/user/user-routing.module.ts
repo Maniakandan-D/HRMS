@@ -18,10 +18,6 @@ const routes: Routes = [
       ...childRoutes
     ]
   },
-  {
-    path: '',
-    component: UserTableComponent
-  }
 ];
 
 @NgModule({

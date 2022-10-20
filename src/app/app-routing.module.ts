@@ -16,12 +16,9 @@ const routes: Routes = [
       import('./login/login.module').then((m) => m.LoginModule),
   },
   {
-    path: 'register/:id',
+    path: 'signup',
     loadChildren: () =>
-      import('src/app/password/password.module').then(
-        m => m.PasswordModule
-      ),
-    data: { icon: 'assignment', text: 'Password' }
+      import('./signup/signup.module').then((m) => m.SignupModule),
   },
   {
     path: '**',

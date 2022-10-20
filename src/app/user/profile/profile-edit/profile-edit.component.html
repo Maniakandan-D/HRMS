@@ -2,93 +2,175 @@
   <mat-stepper orientation="vertical" [linear]="false" #stepper>
     <mat-step [stepControl]="basicInfoFormGroup">
         <ng-template matStepLabel>Basic Info</ng-template>
-        <mat-card fxFlex.gt-xs=100%>
+        <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=5% fxLayoutAlign="space-around stretch">
+          <mat-card fxFlex.gt-xs=15%>
             <mat-card-content>
-              <app-basic-info></app-basic-info>
+              <image-info></image-info>
+              </mat-card-content>
+          </mat-card>
+          <mat-card fxFlex.gt-xs=80%>
+            <mat-card-content>
+              <primary-info></primary-info>
             </mat-card-content>
           </mat-card>
-        
-        <!-- <form [formGroup]="basicInfoFormGroup" #basic="ngForm">
-            <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
-                <div class="mb10"fxFlex="15">
-                  <mat-form-field>
-                    <input matInput placeholder="First name" formControlName="firstName" [class.is-invalid]="basic.submitted && basicInfoFormGroup.get('firstName')?.invalid">
-                    <mat-error class="invalid-feedback"> First name is required</mat-error>
-                  </mat-form-field>
-                </div>
-                <div fxFlex="15">
-                  <mat-form-field>
-                    <input matInput placeholder="middle name">
-                  </mat-form-field>
-                </div>
-                <div fxFlex="15">
-                  <mat-form-field>
-                    <input matInput placeholder="Last name" formControlName="lastName" [class.is-invalid]="basic.submitted && basicInfoFormGroup.get('lastName')?.invalid">
-                    <mat-error class="invalid-feedback">Last name is required</mat-error>
-                  </mat-form-field>
-                </div>
-            </div>
-            <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
-              <div class="mb10"fxFlex="15">
-                <mat-form-field>
-                  <input matInput placeholder="Name(As per Aadhar)" formControlName="nameAadhar" [class.is-invalid]="basic.submitted && basicInfoFormGroup.get('nameAadhar')?.invalid">
-                  <mat-error class="invalid-feedback">Aadhar name is required</mat-error>
-                </mat-form-field>
-              </div>
-              <div fxFlex="15">
-                <mat-form-field>
-                  <input matInput placeholder="Aadhar Number" formControlName="AadharNo" [class.is-invalid]="basic.submitted && basicInfoFormGroup.get('AadharNo')?.invalid">
-                  <mat-error class="invalid-feedback">Aadhar number is required</mat-error>
-                </mat-form-field>
-              </div>
-              <div fxFlex="15">
-                <mat-form-field class="columns">
-                    <mat-label *ngIf="aadharFile; else aadharFileTemplate">{{aadharFile.name}}</mat-label>
-                    <ng-template #aadharFileTemplate>
-                        <mat-label>Aadhar card</mat-label>
-                    </ng-template>
-                    <input matInput disabled>
-                    <button  mat-icon-button matSuffix (click)="fileInput.click()">
-                        <mat-icon class="material-icons">attach_file</mat-icon>
-                    </button>
-                    <input hidden (change)="onSelectAadharFile($event)" #fileInput type="file" id="file">
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
-              <div class="mb10"fxFlex="15">
-                <mat-form-field>
-                  <input matInput placeholder="Birth Date" [matDatepicker]="picker" (focus)="picker.open()"  formControlName="birthday" [class.is-invalid]="basic.submitted && basicInfoFormGroup.get('birthday')?.invalid">
-                  <mat-hint>MM/DD/YYYY</mat-hint>
-                  <mat-error class="invalid-feedback">Date is required</mat-error>
-                </mat-form-field>
-                <mat-datepicker #picker></mat-datepicker>
-              </div>
-              <div fxFlex="15">
-                <mat-form-field>
-                  <input matInput placeholder="PAN Number" formControlName="PANno" [class.is-invalid]="basic.submitted && basicInfoFormGroup.get('PANno')?.invalid">
-                  <mat-error class="invalid-feedback">PAN number is required</mat-error>
-                </mat-form-field>
-              </div>
-              <div fxFlex="15">
-                <mat-form-field class="columns">
-                  <mat-label *ngIf="PANFile; else panFileTemplate">{{PANFile.name}}</mat-label>
-                  <ng-template #panFileTemplate>
-                    <mat-label>PAN card</mat-label>
-                  </ng-template>
-                  <input matInput disabled>
-                  <button  mat-icon-button matSuffix (click)="inputPANfile.click()">
-                      <mat-icon class="material-icons">attach_file</mat-icon>
-                  </button>
-                  <input hidden (change)="onSelectPANFile($event)" #inputPANfile type="file" id="file">
-                </mat-form-field>
-              </div>
-            </div>
-       </form> -->
+        </div>
+    </mat-step>
+    <!-- <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=8% fxLayoutAlign="space-around stretch">
+          <mat-card fxFlex.gt-xs=100%>
+            <mat-card-content>
+              <correspondence-info></correspondence-info>
+              <permanent-info></permanent-info>
+          </mat-card-content>
+          </mat-card>
+        </div>
+         <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=5% fxLayoutAlign="space-around stretch">
+          <mat-card fxFlex.gt-xs=15%>
+            <mat-card-content>
+              
+            </mat-card-content>
+          </mat-card>
+          <mat-card fxFlex.gt-xs=80%>
+            <mat-card-content>
+              
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </form>
+    </mat-step>  -->
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Communication Info</ng-template>
+        <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=0% fxLayoutAlign="space-around stretch">
+          <mat-card fxFlex.gt-xs=100%>
+            <mat-card-content>
+              <correspondence-info></correspondence-info>
+              <permanent-info></permanent-info>
+          </mat-card-content>
+          </mat-card>
+        </div>
+        <!-- <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div> -->
+      </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
+        <ng-template matStepLabel>Personal Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Reference Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Job History Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Education Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Nominee Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Dependent Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Bank Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Emergency Contact Info</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Profile View</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Address</mat-label>
           <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dependent-info',
+  selector: 'dependent-info',
   templateUrl: './dependent-info.component.html',
   styleUrls: ['./dependent-info.component.scss']
 })
