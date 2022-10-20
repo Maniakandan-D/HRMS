@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from '../layout/layout.component';
 
 import { childRoutes } from './child-routes';
+import { UserTableComponent } from './user-table/user-table.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,10 @@ const routes: Routes = [
       ...childRoutes
     ]
   },
-  
+  {
+    path: '',
+    component: UserTableComponent
+  }
 ];
 
 @NgModule({
