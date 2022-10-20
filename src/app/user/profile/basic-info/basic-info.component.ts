@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserProfileService } from '../../shared/user-profile.service';
-import { GuardianType, UserBasicInfo } from '../../shared/user.model';
+import { GuardianType, UserBasicInfo } from '../../shared/user-profile.model'; 
 
 @Component({
   selector: 'app-basic-info',
