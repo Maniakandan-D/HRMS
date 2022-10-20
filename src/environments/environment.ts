@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   BackendApiEndpointFamilyDetails: "http://localhost:3000/FamilyDetails",
-  BackendApiEndpointSignup: "http://localhost:3000/SignupUsers",
   BackendApiEndpointReferenceDetails: "http://localhost:3000/ReferenceDetails",
   API: 'http://localhost:3000'
 };

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-reference-info',
+  selector: 'reference-info',
   templateUrl: './reference-info.component.html',
   styleUrls: ['./reference-info.component.scss']
 })

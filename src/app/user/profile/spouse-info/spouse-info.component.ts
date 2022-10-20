@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-spouse-info',
+  selector: 'spouse-info',
   templateUrl: './spouse-info.component.html',
   styleUrls: ['./spouse-info.component.scss']
 })
