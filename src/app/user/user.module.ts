@@ -7,16 +7,20 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { EmployeeRoutingModule } from './employee-routing.module';
+import { UserRoutingModule } from './user-routing.module';
 import { LayoutComponent } from '../layout/layout.component';
 import { SideNavComponent } from '../layout/side-nav/side-nav.component';
 import { TopNavComponent } from '../layout/top-nav/top-nav.component';
+import { RegisterComponent } from './register/register.component';
+import { UserInviteComponent } from './user-invite/user-invite.component';
+import { UserTableComponent } from './user-table/user-table.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    EmployeeRoutingModule,
+    UserRoutingModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -25,6 +29,6 @@ import { TopNavComponent } from '../layout/top-nav/top-nav.component';
     MatMenuModule,
     MatListModule
   ],
-  declarations: [LayoutComponent, TopNavComponent, SideNavComponent]
+  declarations: [LayoutComponent, TopNavComponent, SideNavComponent, RegisterComponent, UserInviteComponent, UserTableComponent, UserViewComponent]
 })
-export class EmployeeModule {}
+export class UserModule {}

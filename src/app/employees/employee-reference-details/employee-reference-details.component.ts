@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ReferenceDetails, ReferenceDetailsColumns, ReferenceDetailsVM } from '../shared/shared/add-edit.model';
-import { AddEditService } from '../shared/shared/add-edit.service';
+import { ReferenceDetails, ReferenceDetailsColumns, ReferenceDetailsVM  } from '../shared/shared/reference.model';
+import { AddEditService } from '../shared/shared/add-edit.service'; 
+
 
 
 @Component({
@@ -14,12 +15,13 @@ export class EmployeeReferenceDetailsComponent implements OnInit {
   columnsSchema: any = ReferenceDetailsColumns;
   dataSource = new MatTableDataSource<ReferenceDetails>();
   valid: any = {};
-  constructor(private addEditService: AddEditService) {}
+  constructor(private addEditService: AddEditService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAll();
+   
   }
-  
+
   getAll(){
     this.addEditService.getAllReference().subscribe((res: any) => {
       this.dataSource.data = res;
@@ -38,11 +40,12 @@ export class EmployeeReferenceDetailsComponent implements OnInit {
   }
 
   addRow() {
-    const newRow: ReferenceDetails = {
+    const newRow: ReferenceDetailsVM = {
       id: '',
       name: '',
       mobileNo: '',
-      relationShip: ''
+      relationship: '',
+      isEdit: true,
     };
     this.dataSource.data = [newRow, ...this.dataSource.data];
   }

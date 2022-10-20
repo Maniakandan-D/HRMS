@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { FamilyDetails } from './add-edit.model';
-import { ReferenceDetails } from './add-edit.model';
+import { ReferenceDetails } from './reference.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +44,7 @@ export class AddEditService {
   }
 
   updateReference(referenceDetails: ReferenceDetails): any{
-    return this.http.put(`${this.apiEndpointName}/${referenceDetails.id}`, referenceDetails);
+    return this.http.put<ReferenceDetails>(`${this.apiEndpointName}/${referenceDetails.id}`, referenceDetails);
   }
 
   deleteReference(id:string): Observable<ReferenceDetails>{
