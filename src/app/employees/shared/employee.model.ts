@@ -4,7 +4,7 @@ export class Employee {
     nameAadhar: string;
     AadharNo:string;
     Fathername: string;
-    bithday: string;
+    birthday: string;
     PANno:string;
     spouseName : string;
     spouseEmployer : string;

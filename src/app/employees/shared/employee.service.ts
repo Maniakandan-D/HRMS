@@ -62,7 +62,7 @@ export class EmployeeService {
     nameAadhar: 'John Doe',
     AadharNo:'123456789123',
     Fathername: 'mark',
-    bithday: '11-09-2020',
+    birthday: '10/03/2022',
     PANno: '43654365436',
     // streetAddress : '213,abc',
     // apartmentUnit : '12',

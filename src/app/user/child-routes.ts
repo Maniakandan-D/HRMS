@@ -13,4 +13,12 @@ export const childRoutes = [
       ),
     data: { icon: 'assignment', text: 'EmployeeDetails' }
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('src/app/user/profile/profile.module').then(
+        m => m.ProfileModule
+      ),
+    data: { icon: 'assignment', text: 'Profile' }
+  },
 ];
