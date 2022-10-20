@@ -23,7 +23,7 @@ export const childRoutes = [
   },
 
   {
-    path: 'password',
+    path: 'register',
     loadChildren: () =>
       import('src/app/password/password.module').then(
         m => m.PasswordModule

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../password-validator';
+import { UserService } from '../../users/shared/user.service';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
@@ -8,8 +9,9 @@ import { PasswordValidation } from '../password-validator';
 })
 export class PasswordComponent implements OnInit {
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
-
+  constructor(private formBuilder: FormBuilder,
+    private userService:UserService) { }
+    
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       fullName:['',Validators.required],
@@ -19,6 +21,8 @@ export class PasswordComponent implements OnInit {
     }, {
       validator: PasswordValidation.MatchPassword
     });
+
+
   }
 
   onSubmit(){
@@ -29,5 +33,6 @@ export class PasswordComponent implements OnInit {
   public checkError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
   }
+
 
 }
