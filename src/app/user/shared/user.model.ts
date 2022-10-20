@@ -1,10 +1,12 @@
 export class User {
   id: string;
   userName: string;
+  password:string;
   email: string;
   fullName: string;
   userRoles: string[];
   phoneNumber: string;
+  isActive:boolean;
 }
 
 export abstract class Auditable {
@@ -14,60 +16,60 @@ export abstract class Auditable {
   userModified: string;
 }
 
-// export abstract class IUserProfile extends Auditable {
-//   userId: string;
-// }
+export abstract class IUserProfile extends Auditable {
+  userId: string;
+}
 
-// export class UserProfile extends IUserProfile {
-//   UserBasicInfo: UserBasicInfo;
-//   UserContactInfo: UserContactInfo;
-// }
+export class UserProfile extends IUserProfile {
+  UserBasicInfo: UserBasicInfo;
+  UserContactInfo: UserContactInfo;
+}
 
-// export class UserBasicInfo extends IUserProfile {
-//   firstName: string;
-//   middleName: string;
-//   lastName: string;
-//   profileImageFile: File;
-//   profileImageUrl: string;
-//   dob: Date;
-//   aadharName: string;
-//   aadharFile: File;
-//   aadharNumber: string;
-//   aadharAttachmentUrl: string;
-//   panNumber: string;
-//   panFile: File;
-//   panAttachmentUrl: string;
-//   nationality: string;
-//   passportNumber: string;
-//   validVisaInformation: string;
-//   guardianType: string;
-//   guardianName: string;
-// }
+export class UserBasicInfo extends IUserProfile {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  profileImageFile: File;
+  profileImageUrl: string;
+  dob: Date;
+  aadharName: string;
+  aadharFile: File;
+  aadharNumber: string;
+  aadharAttachmentUrl: string;
+  panNumber: string;
+  panFile: File;
+  panAttachmentUrl: string;
+  nationality: string;
+  passportNumber: string;
+  validVisaInformation: string;
+  guardianType: string;
+  guardianName: string;
+}
 
-// export enum GuardianType {
-//   Father,
-//   Husband,
-//   Guardian,
-// }
+export enum GuardianType {
+  Father,
+  Husband,
+  Guardian,
+}
 
 
 
-// export class UserContactInfo extends IUserProfile { 
-//   CorrespondenceAddress: UserAddress;
-//   PermanentAddress: UserAddress;
-//   CorrespondenceAddressId: string;
-//   PermanentAddressId: string;
-//   IsCorrespondenceSameAsPermanent: boolean;
-//   HomePhone: string;
-//   MobilePhone: string;
-//   Email: string;
-// }
+export class UserContactInfo extends IUserProfile { 
+  CorrespondenceAddress: UserAddress;
+  PermanentAddress: UserAddress;
+  CorrespondenceAddressId: string;
+  PermanentAddressId: string;
+  IsCorrespondenceSameAsPermanent: boolean;
+  HomePhone: string;
+  MobilePhone: string;
+  Email: string;
+}
 
-// export class UserAddress {
-//   UserAddressId: string;
-//   Street: string;
-//   Apartment: string;
-//   City: string;
-//   State: string;
-//   PinCode: string;
-// }
+export class UserAddress {
+  UserAddressId: string;
+  Street: string;
+  Apartment: string;
+  City: string;
+  State: string;
+  PinCode: string;
+}

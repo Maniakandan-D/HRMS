@@ -16,20 +16,20 @@ export const childRoutes = [
   {
     path: 'users',
     loadChildren: () =>
-      import('src/app/users/users.module').then(
-        m => m.UsersModule
+      import('src/app/user/user.module').then(
+        m => m.UserModule
       ),
     data: { icon: 'table_chart', text: 'Users' }
   },
-
   {
-    path: 'password',
+    path: 'register',
     loadChildren: () =>
       import('src/app/password/password.module').then(
         m => m.PasswordModule
       ),
     data: { icon: 'assignment', text: 'Password' }
   },
+  
   {
     path: 'user',
     loadChildren: () =>

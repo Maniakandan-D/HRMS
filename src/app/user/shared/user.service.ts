@@ -9,6 +9,9 @@ import { User } from './user.model';
   providedIn: 'root'
 })
 export class UserService {
+  post<T>(arg0: string, value: any) {
+    throw new Error('Method not implemented.');
+  }
 
   //GET: api/v1/user/profile
   //GET: api/v1/user/profile/id
@@ -30,12 +33,16 @@ export class UserService {
   }
 
   registerUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiEndpoint}`, user);
+    return this.http.post<User>(`${this.apiEndpoint}/users`, user);
   }
 
   deleteUser(id: string): Observable<boolean> {
     return this.http.delete<boolean>(`${this.apiEndpoint}/${id}`).pipe(map((res: any) => {
       return res
     }));
+  }
+
+  updateUser(user:User,id:any ):Observable<User>{
+      return this.http.put<User>(`${this.apiEndpoint}/${id}`,user);
   }
 }
