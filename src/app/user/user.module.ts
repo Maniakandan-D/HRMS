@@ -33,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserInviteComponent } from './user-invite/user-invite.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { UserViewComponent } from './user-view/user-view.component';
+import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -67,6 +68,7 @@ import { UserViewComponent } from './user-view/user-view.component';
     RegisterComponent,
     UserInviteComponent,
     UserTableComponent,
-    UserViewComponent]
+    UserViewComponent,
+    ConfirmDialogComponent]
 })
 export class UserModule { }
