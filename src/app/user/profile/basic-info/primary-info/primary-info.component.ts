@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { UserProfileService } from '../../shared/user-profile.service';
-import { GuardianType, UserBasicInfo } from '../../shared/user-profile.model'; 
+import { UserProfileService } from '../../../shared/user-profile.service';
+import { GuardianType, UserBasicInfo } from '../../../shared/user-profile.model'; 
 
 @Component({
-  selector: 'app-basic-info',
-  templateUrl: './basic-info.component.html',
+  selector: 'primary-info',
+  templateUrl: './primary-info.component.html',
 })
-export class BasicInfoComponent implements OnInit {
+export class PrimaryInfoComponent implements OnInit {
 
   //@Input()
   basicInfo: UserBasicInfo;
@@ -16,6 +16,7 @@ export class BasicInfoComponent implements OnInit {
   basicInfoFormGroup: FormGroup;
   aadharFile: File;
   PANFile: File;
+  PassportFile: File;
 
 
   constructor(private _formBuilder: FormBuilder, private userProfileService: UserProfileService) { }
@@ -46,6 +47,10 @@ export class BasicInfoComponent implements OnInit {
 
   onSelectPANFile(event: Event): void {
     this.PANFile = this.getInputFile(event);
+  }
+  
+  onSelectPassportFile(event: Event){
+    this.PassportFile = this.getInputFile(event);
   }
 
   getInputFile(event: Event): File {

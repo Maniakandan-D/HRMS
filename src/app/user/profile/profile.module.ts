@@ -46,9 +46,8 @@ import {MatTreeModule} from '@angular/material/tree'
 
 
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
-import { BasicInfoComponent } from './basic-info/basic-info.component';
+import { PrimaryInfoComponent } from './basic-info/primary-info/primary-info.component';
 import { BankInfoComponent } from './bank-info/bank-info.component';
-import { CommunicationInfoComponent } from './communication-info/communication-info.component';
 import { DependentInfoComponent } from './dependent-info/dependent-info.component';
 import { EducationInfoComponent } from './education-info/education-info.component';
 import { EmergencyContactInfoComponent } from './emergency-contact-info/emergency-contact-info.component';
@@ -58,13 +57,15 @@ import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { SpouseInfoComponent } from './spouse-info/spouse-info.component';
 import { ReferenceInfoComponent } from './reference-info/reference-info.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { ImageInfoComponent } from './basic-info/image-info/image-info.component';
+import { CorrespondenceInfoComponent } from './communication-info/correspondence-info/correspondence-info.component';
+import { PermanentInfoComponent } from './communication-info/permanent-info/permanent-info.component';
 
 @NgModule({
   declarations: [
     ProfileEditComponent,
-    BasicInfoComponent,
+    PrimaryInfoComponent,
     BankInfoComponent,
-    CommunicationInfoComponent,
     DependentInfoComponent,
     EducationInfoComponent,
     EmergencyContactInfoComponent,
@@ -73,7 +74,10 @@ import { ProfileViewComponent } from './profile-view/profile-view.component';
     PersonalInfoComponent,
     SpouseInfoComponent,
     ReferenceInfoComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    ImageInfoComponent,
+    CorrespondenceInfoComponent,
+    PermanentInfoComponent
   ],
   imports: [
     CommonModule,
