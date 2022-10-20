@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserProfileService } from '../../../shared/user-profile.service';
-import { GuardianType, UserBasicInfo } from '../../../shared/user-profile.model'; 
+import { GuardianType, UserBasicInfo, UserProfile } from '../../../shared/user-profile.model'; 
 
 @Component({
   selector: 'primary-info',
   templateUrl: './primary-info.component.html',
 })
 export class PrimaryInfoComponent implements OnInit {
-
+  basicInfo: UserBasicInfo = new UserBasicInfo();
   //@Input()
-  basicInfo: UserBasicInfo;
   guardianTypes: (string | GuardianType)[];
   GuardianType: GuardianType;
   basicInfoFormGroup: FormGroup;
@@ -28,12 +27,18 @@ export class PrimaryInfoComponent implements OnInit {
       firstName: ['', [Validators.required]],
       middleName: [''],
       lastName: ['', [Validators.required]],
-      nameAadhar: ['', [Validators.required]],
-      AadharNo: ['', [Validators.required]],
-      Fathername: ['', [Validators.required]],
+      profileImageFile: ['', [Validators.required]],
       dob: ['', [Validators.required]],
-      PANnumber: ['', [Validators.required]],
+      aadharName: ['', [Validators.required]],
+      aadharNumber: [''],
+      aadharFile:[''],
+      panNumber: [''],
+      panFile:[''],
+      nationality:[''],
+      passportNumber:[''],
+      validVisaInformation:[''],
       guardianType: ['', [Validators.required]],
+      guardianName: ['', [Validators.required]],
     }, { updateOn: 'submit' });
 
 

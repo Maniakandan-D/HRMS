@@ -5,8 +5,23 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 const routes: Routes = [
   {
     path: '',
-    component: ProfileEditComponent
+    component: ProfileEditComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'profile'
+      },
+      {
+        path: 'profile',
+        component: ProfileEditComponent
+      }
+    ]
   }
+  // },
+  // {
+  //   path: '',
+  //   component: ProfileEditComponent
+  // }
 ];
 
 @NgModule({
