@@ -11,15 +11,16 @@ const routes: Routes = [
       // canActivate: [AuthGuard],
   },
   {
+    path: 'user',
+    loadChildren: () =>
+      import('./user/user.module').then((m) => m.UserModule),
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },
-  {
-    path: 'signup',
-    loadChildren: () =>
-      import('./signup/signup.module').then((m) => m.SignupModule),
-  },
+
   {
     path: '**',
     component: PageNotFoundComponent,

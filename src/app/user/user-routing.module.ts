@@ -4,6 +4,7 @@ import { LayoutComponent } from '../layout/layout.component';
 
 import { childRoutes } from './child-routes';
 import { UserTableComponent } from './user-table/user-table.component';
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 
 
 const routes: Routes = [
@@ -15,9 +16,19 @@ const routes: Routes = [
         path: '',
         redirectTo: 'dashboard'
       },
+      {
+        path: 'users',
+        component: UserTableComponent,
+       
+      },
       ...childRoutes
     ]
   },
+  // {
+  //   path: 'user',
+  //   component: UserTableComponent,
+   
+  // }
 ];
 
 @NgModule({

@@ -19,7 +19,7 @@ export const childRoutes = [
       import('src/app/user/user.module').then(
         m => m.UserModule
       ),
-    data: { icon: 'table_chart', text: 'Users' }
+    data: { icon: 'table_chart', text: 'User' }
   },
   {
     path: 'register',
