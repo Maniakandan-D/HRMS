@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Communication } from 'src/app/employees/shared/employee.model';
 import { CorrespondenceAddress } from 'src/app/user/shared/user-profile.model';
+import { UserProfileService } from 'src/app/user/shared/user-profile.service';
 
 @Component({
   selector: 'correspondence-info',
@@ -32,7 +33,7 @@ export class CorrespondenceInfoComponent implements OnInit {
 
   correspondenceForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userProfileService: UserProfileService) { }
 
   ngOnInit(): void {
     this.correspondenceForm = this.fb.group({

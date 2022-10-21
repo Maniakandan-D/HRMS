@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PermanentAddress } from 'src/app/user/shared/user-profile.model';
+import { UserProfileService } from 'src/app/user/shared/user-profile.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class PermanentInfoComponent implements OnInit {
     
   };
   // permanentInfo: PermanentAddress = new PermanentAddress();
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userProfileService: UserProfileService) { }
   ngOnInit(): void {
     this.permanentForm = this.fb.group({
       'street': new FormControl(''),
