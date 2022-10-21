@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Communication } from 'src/app/employees/shared/employee.model';
+import { CorrespondenceAddress } from 'src/app/user/shared/user-profile.model';
+import { UserProfileService } from 'src/app/user/shared/user-profile.service';
 
 @Component({
   selector: 'correspondence-info',
@@ -10,50 +11,67 @@ import { Communication } from 'src/app/employees/shared/employee.model';
 })
 export class CorrespondenceInfoComponent implements OnInit {
 
+  // correspondenceInfo: CorrespondenceAddress = new CorrespondenceAddress();
+
+  correspondenceInfo: CorrespondenceAddress = {
+    userAddressId: "",
+    homePhone: "",
+    mobilePhone: "",
+    email: "",
+    street: "",
+    apartment: "",
+    city: "",
+    state: "",
+    pincode: ""
+  };
   @Input()
   communication: Communication;
 
   @Output()
   formReady = new EventEmitter<FormGroup>();
 
-  @Output()
-  valueChange = new EventEmitter<Partial<Communication>>();
 
   correspondenceForm: FormGroup;
 
-  private subscription = new Subscription();
-
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userProfileService: UserProfileService) { }
 
   ngOnInit(): void {
     this.correspondenceForm = this.fb.group({
-      email: [this.communication.email, [Validators.required, Validators.email,
-      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      mobilePhone: [this.communication.mobilePhone, [Validators.required]],
-      streetAddress: [this.communication.streetAddress, [Validators.required]],
-      apartmentUnit: [this.communication.apartmentUnit, [Validators.required]],
-      city: [this.communication.city, [Validators.required]],
-      state: [this.communication.state, [Validators.required]],
-      pincode: [this.communication.pincode, [Validators.required]],
-    }, { updateOn: 'submit' });
+      'email': new FormControl('', [Validators.required, Validators.email,
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      'mobilePhone':new FormControl('', Validators.required),
+      'homePhone': new FormControl(''),
+      'street':new FormControl('', Validators.required),
+      'apartment':new FormControl('', Validators.required),
+      'city': new FormControl('', Validators.required),
+      'state': new FormControl('', Validators.required),
+      'pincode': new FormControl('', Validators.required),
 
-    this.subscription.add(
-      this.correspondenceForm.valueChanges.subscribe((value) => {
-        this.valueChange.emit({
-          email: value.email,
-          mobilePhone: value.mobilePhone,
-          streetAddress: value.streetAddress,
-          apartmentUnit: value.apartmentUnit,
-          city: value.city,
-          state: value.state,
-          pincode: value.pincode,
-        });
-      })
-    );
+      //   'email': this.fb.control('', [Validators.required, Validators.email,
+      //   Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$') ]),
+      // 'mobilePhone': this.fb.control('', Validators.required),
+      // 'homePhone':this.fb.control(''),
+      // 'street': this.fb.control('', Validators.required),
+      // 'apartment': this.fb.control('', Validators.required),
+      // 'city': this.fb.control('', Validators.required),
+      // 'state': this.fb.control('', Validators.required),
+      // 'pincode': this.fb.control('', Validators.required),
+
+      // email: [this.communication.email, [Validators.required, Validators.email,
+      // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      // mobilePhone: [this.communication.mobilePhone, [Validators.required]],
+      // homePhone: [''],
+      // street: ['', [Validators.required]],
+      // apartment: ['', [Validators.required]],
+      // city: ['', [Validators.required]],
+      // state: ['', [Validators.required]],
+      // pincode: ['', [Validators.required]],
+    }, { updateOn: 'submit' });
 
     this.formReady.emit(this.correspondenceForm);
   }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+
+  onSubmit(): void {
+    this.userProfileService.saveUserCorrespondenceAddressInfo(this.correspondenceInfo);
   }
 }

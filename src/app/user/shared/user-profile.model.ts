@@ -42,7 +42,27 @@ export enum GuardianType {
 }
 
 
+export class CorrespondenceAddress{
+    userAddressId: string;
+    homePhone: string;
+    mobilePhone: string;
+    email: string;
+    street: string;
+    apartment: string;
+    city: string;
+    state: string;
+    pincode: string;
+}
 
+export class PermanentAddress{
+    userAddressId: string;
+    street: string;
+    apartment: string;
+    city: string;
+    state: string;
+    pincode: string;
+}
+ 
 export class UserContactInfo extends IUserProfile {
     CorrespondenceAddress: UserAddress;
     PermanentAddress: UserAddress;
