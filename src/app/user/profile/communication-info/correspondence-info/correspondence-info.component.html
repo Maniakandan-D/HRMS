@@ -1,4 +1,4 @@
-<form [formGroup]="correspondenceForm" #correspondence="ngForm">
+<form [formGroup]="correspondenceForm"  (ngSubmit)="onSubmit()" #correspondence="ngForm">
     <div>
         <mat-card-header>
             <mat-card-title>Contact</mat-card-title>

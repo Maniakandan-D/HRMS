@@ -32,5 +32,7 @@ export class PermanentInfoComponent implements OnInit {
       'pincode': new FormControl('')
     }, { updateOn: 'submit' });
   }
-
+  onSubmit(){
+    this.userProfileService.saveUserPermanentAddressInfo(this.permanentInfo);
+  }
 }
