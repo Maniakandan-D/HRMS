@@ -24,43 +24,73 @@ export class PasswordComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.activatedRoute.queryParams
-    .subscribe(params => {
-      console.log(params); 
-      this.userId = params.id;
-    }
-  );
+  //   this.activatedRoute.queryParams
+  //   .subscribe(params => {
+  //     console.log("params"+params); 
+  //     this.userId = params.id;
+  //   }
+  // );
 
+  const id = this.activatedRoute.snapshot.paramMap.get('id');
+this.userService.getById(id).subscribe((res) => {
 
-this.userService.getById(this.userId).subscribe((res) => {
+  console.log(JSON.stringify(res));
    this.user = res;
 });
 
-if(this.user == null)
-{
-  //route to something went to wrong
+// if(this.user == undefined)
+// {
+//   //route to something went to wrong
+// }
+ () =>  {
+  if(this.user === undefined) {return}
+  else{
+    this.user.isActive;
+  if(this.user.isActive){
+    return
+  }else{
+    // The rest of the code
+  this.form = this.formBuilder.group({
+    fullName:['',Validators.required],
+    email:[{value:'this.form.value',disabled:true}],
+    password: ['',[
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+      ),
+      Validators.minLength(8),
+    ]],
+    PhoneNumber:['',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+    confirmPassword: ['', Validators.required]
+  }, {
+    validator: PasswordValidation.MatchPassword
+  });
+  }
+} 
+
 }
 
-if(this.user.isActive)
-{
-  //display message : user is registered already, please login <login button>
-}
 
-    this.form = this.formBuilder.group({
-      fullName:['',Validators.required],
-      email:[{value:'aprilcox@newcube.com',disabled:true}],
-      password: ['',[
-        Validators.required,
-        Validators.pattern(
-          /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-        ),
-        Validators.minLength(8),
-      ]],
-      PhoneNumber:['',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-      confirmPassword: ['', Validators.required]
-    }, {
-      validator: PasswordValidation.MatchPassword
-    });
+// if(this.user.isActive)
+// {
+//   //display message : user is registered already, please login <login button>
+// }
+
+//     this.form = this.formBuilder.group({
+//       fullName:['',Validators.required],
+//       email:[{value:'aprilcox@newcube.com',disabled:true}],
+//       password: ['',[
+//         Validators.required,
+//         Validators.pattern(
+//           /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+//         ),
+//         Validators.minLength(8),
+//       ]],
+//       PhoneNumber:['',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+//       confirmPassword: ['', Validators.required]
+//     }, {
+//       validator: PasswordValidation.MatchPassword
+//     });
 
 
   }

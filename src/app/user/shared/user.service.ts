@@ -25,7 +25,7 @@ export class UserService {
   }
 
   getById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.apiEndpoint}`);
+    return this.http.get<User>(`${this.apiEndpoint}/users/${id}`);
   }
 
   inviteUser(user: InviteUser): Observable<User> {
