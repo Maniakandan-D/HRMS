@@ -1,6 +1,6 @@
 export class EmergencyContactInfo {
     id: string;
-    Physician: string;
+    physician: string;
     phoneNumber: number;
     bloodGroup: string;
     firstName: string;

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ToastrModule,
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
