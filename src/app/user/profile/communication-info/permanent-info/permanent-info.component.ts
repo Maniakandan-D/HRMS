@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { PermanentAddress } from 'src/app/user/shared/user-profile.model';
+
 
 @Component({
   selector: 'permanent-info',
@@ -8,9 +10,26 @@ import { FormControl } from '@angular/forms';
 })
 export class PermanentInfoComponent implements OnInit {
   disableSelect = new FormControl(false);
-  constructor() { }
-
+  permanentForm: FormGroup;
+  permanentInfo: PermanentAddress = {
+    userAddressId: "",
+    street: "",
+    apartment: "",
+    city: "",
+    state: "",
+    pincode: "",
+    
+  };
+  // permanentInfo: PermanentAddress = new PermanentAddress();
+  constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
+    this.permanentForm = this.fb.group({
+      'street': new FormControl(''),
+      'apartment': new FormControl(''),
+      'city': new FormControl(''),
+      'state': new FormControl(''),
+      'pincode': new FormControl('')
+    }, { updateOn: 'submit' });
   }
 
 }
