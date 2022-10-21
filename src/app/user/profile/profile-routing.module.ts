@@ -12,7 +12,7 @@ const routes: Routes = [
         redirectTo: 'profile'
       },
       {
-        path: 'profile',
+        path: 'profile/:id',
         component: ProfileEditComponent
       }
     ]
