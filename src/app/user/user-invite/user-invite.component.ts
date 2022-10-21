@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogService } from '../shared/dialog.service';
 import { UserService } from '../shared/user.service';
+import { InviteUser, User } from '../shared/user.model';
 
 @Component({
   selector: 'app-user-invite',
@@ -35,6 +36,12 @@ export class UserInviteComponent implements OnInit {
             .split(/;|,|\n/)
             .forEach(value => {
               if(value.trim()){
+                
+
+                //check duplication warning message 
+//if email exsit raise error and remove from list
+
+
                 this.emailList.push({ 
                     value: value.trim() 
                   });
@@ -47,6 +54,8 @@ export class UserInviteComponent implements OnInit {
         console.log(event.value);
         if (event.value) {
             if (this.validateEmail(event.value)) {
+
+              if(event.value )
                 this.emailList.push({ value: event.value, invalid: false });
             }
             else {
@@ -71,6 +80,7 @@ export class UserInviteComponent implements OnInit {
       email:[''],
       role:[''],
       docs:[''],
+      requestProfile:[''],
       empForm:[''],
       status:[''],
     });
@@ -83,6 +93,8 @@ export class UserInviteComponent implements OnInit {
           this.userForm.controls['docs'].setValue(this.editData.docs);
           this.userForm.controls['empForm'].setValue(this.editData.empForm);
           this.userForm.controls['status'].setValue(this.editData.status);
+          this.userForm.controls['requestProfile'].setValue(this.editData.profileStatus);
+
       }  
   }
 
@@ -90,23 +102,36 @@ export class UserInviteComponent implements OnInit {
     this.showEmail=true;
     if(!this.editData){
       if(this.userForm.valid){
-        this.userService.inviteUsers(this.userForm.value)
-        .subscribe({
-          next:(res)=>{
-            this.dialogService.confirmUpdate({
-              title:'User added Confirmation!',
-              message:`You have added a user successfully `,
-              confirmCaption: 'okay',
-              cancelCaption:''
-            })
-            console.log(this.userForm.value);
-            this.userForm.reset(); 
-            this.dialogRef.close();
-          },
-          error:()=>{
-            alert("something went wrong");
-          }
-        })
+
+this.emailList.forEach((email)=>{
+
+  let user: InviteUser= {
+    email: email,  
+  userRole: this.editData.role,
+  requestProfile:this.editData.requestProfile
+  };
+
+  this.userService.inviteUser(user)
+  .subscribe({
+    next:(res)=>{
+      this.dialogService.confirmUpdate({
+        title:'Invitation Confirmation!',
+        message:`${user.email} invited successfully `,
+        confirmCaption: 'okay',
+        cancelCaption:''
+      })
+      console.log(this.userForm.value);
+      this.userForm.reset(); 
+      this.dialogRef.close();
+    },
+    error:()=>{
+      alert("something went wrong");
+    }
+  })
+
+});
+
+       
       }
     }
     else{

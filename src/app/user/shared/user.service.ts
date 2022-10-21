@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { User } from './user.model';
+import { InviteUser, User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,15 +21,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiEndpoint}`);
+    return this.http.get<User[]>(`${this.apiEndpoint}/users`);
   }
 
   getById(id: string): Observable<User> {
     return this.http.get<User>(`${this.apiEndpoint}`);
   }
 
-  inviteUsers(users: User[]): Observable<User[]> {
-    return this.http.post<User[]>(`${this.apiEndpoint}`, users);
+  inviteUser(user: InviteUser): Observable<User> {
+    return this.http.post<User>(`${this.apiEndpoint}/users`, user);
   }
 
   registerUser(user: User): Observable<User> {
