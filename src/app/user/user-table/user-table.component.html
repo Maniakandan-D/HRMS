@@ -40,13 +40,13 @@
           <!-- email Column -->
           <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name </th>
-            <td mat-cell *matCellDef="let row">{{row.email}}</td>
+            <td mat-cell *matCellDef="let row">{{row.username}}</td>
           </ng-container>
       
           <!-- role Column -->
           <ng-container matColumnDef="role">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
-            <td mat-cell *matCellDef="let row"> {{row.role}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.userRoles}} </td>
           </ng-container>
 
           <!-- status Column -->
@@ -58,16 +58,15 @@
                 <mat-label>Status</mat-label>
                 <mat-select>
                   
-                  <mat-option *matCellDef="let row" >Active</mat-option>
+                  <mat-option >Active</mat-option>
                   <mat-option>Deactivated</mat-option>
                   <mat-option >Pending</mat-option>
-                  <mat-option >Expired</mat-option>
              
                 </mat-select>
               </mat-form-field>
 
             </th>
-            <td mat-cell *matCellDef="let row">{{row.status}} </td>
+            <td mat-cell *matCellDef="let row">{{row.isActive}} </td>
           </ng-container>
 
           <!-- Last Activity Column -->

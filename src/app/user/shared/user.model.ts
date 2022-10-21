@@ -1,3 +1,10 @@
+export class InviteUser {
+ 
+  email: string;  
+  userRole: string;
+  requestProfile:boolean;  
+}
+
 export class User {
   id: string;
   userName: string;
@@ -6,6 +13,7 @@ export class User {
   fullName: string;
   userRoles: string[];
   phoneNumber: string;
+  profileStatus:ProfileStatus; 
   isActive:boolean;
 }
 
@@ -52,7 +60,15 @@ export enum GuardianType {
   Guardian,
 }
 
-
+ export enum ProfileStatus
+{
+    None = 0,
+    Pending = 1,
+    InProgress = 2,
+    Submitted = 3,
+    RequestedForEdit = 4,
+    Completed = 5
+}
 
 export class UserContactInfo extends IUserProfile { 
   CorrespondenceAddress: UserAddress;
