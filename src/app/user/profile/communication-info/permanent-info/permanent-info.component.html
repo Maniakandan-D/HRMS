@@ -1,4 +1,4 @@
-<form [formGroup]="permanentForm">
+<form [formGroup]="permanentForm" (ngSubmit)="onSubmit()">
     <div class="row">
         <mat-checkbox [formControl]="disableSelect">correspondence address same as permanent address</mat-checkbox>
     </div>

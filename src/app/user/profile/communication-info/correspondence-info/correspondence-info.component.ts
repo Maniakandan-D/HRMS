@@ -70,4 +70,8 @@ export class CorrespondenceInfoComponent implements OnInit {
 
     this.formReady.emit(this.correspondenceForm);
   }
+
+  onSubmit(): void {
+    this.userProfileService.saveUserCorrespondenceAddressInfo(this.correspondenceInfo);
+  }
 }
