@@ -115,20 +115,20 @@
       "userContactInfo": {
         "userId": "4e479c6c-84f7-4ca1-9167-6e79ae35592a",
         "CorrespondenceAddress": {
-          "UserAddressId": "4e479c6c-84f7-4ca-sssss",
-          "Street": "",
-          "Apartment": "",
-          "City": "",
-          "State": "",
-          "PinCode": ""
+          "userAddressId": "4e479c6c-84f7-4ca-sssss",
+          "homePhone": "",
+          "mobilePhone": "",
+          "email": "",
+          "street": "",
+          "apartment": "",
+          "city": "",
+          "state": "",
+          "pinCode": ""
         },
         "PermanentAddress": null,
         "CorrespondenceAddressId": "4e479c6c-84f7-4ca-sssss",
         "PermanentAddressId": null,
-        "IsCorrespondenceSameAsPermanent": true,
-        "HomePhone": "",
-        "MobilePhone": "",
-        "Email": ""
+        "IsCorrespondenceSameAsPermanent": true
       }
     }
   ]

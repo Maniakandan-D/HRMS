@@ -22,7 +22,7 @@ export class PrimaryInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.guardianTypes = Object.values(GuardianType).filter(value => typeof value === 'string');
-
+    
     this.basicInfoFormGroup = this._formBuilder.group({
       firstName: ['', [Validators.required]],
       middleName: [''],
