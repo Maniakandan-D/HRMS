@@ -16,6 +16,14 @@ const routes: Routes = [
       import('./login/login.module').then((m) => m.LoginModule),
   },
   {
+    path: 'register/:id',
+    loadChildren: () =>
+      import('src/app/password/password.module').then(
+        m => m.PasswordModule
+      ),
+    data: { icon: 'assignment', text: 'Password' }
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

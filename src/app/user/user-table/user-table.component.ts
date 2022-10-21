@@ -10,6 +10,7 @@ import { User } from '../shared/user.model';
 
 import { DialogService } from '../shared/dialog.service';
 import { UserViewComponent } from '../user-view/user-view.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -30,11 +31,13 @@ export class UserTableComponent implements OnInit {
   showEmail:boolean=false;
   constructor( private userService: UserService,
      public dialog:MatDialog,
-     private dialogService:DialogService) { }
+     private dialogService:DialogService,
+     ) { }
 
 
   ngOnInit(): void {
     this.getAlluser();
+   
   }
 
   

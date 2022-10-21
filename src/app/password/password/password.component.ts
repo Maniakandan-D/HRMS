@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../password-validator';
 import { UserService } from 'src/app/user/shared/user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/user/shared/user.model';
 @Component({
   selector: 'app-password',
@@ -12,12 +12,40 @@ import { User } from 'src/app/user/shared/user.model';
 export class PasswordComponent implements OnInit {
   form: FormGroup;
   MOBILE_PATTERN = /[0-9\+\-\ ]/;
+  userId: string;
+  user: User;
   constructor(private formBuilder: FormBuilder,
     private userService:UserService,
     private http:UserService,
-    private router: Router) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+    ) { }
     
   ngOnInit(): void {
+
+
+    this.activatedRoute.queryParams
+    .subscribe(params => {
+      console.log(params); 
+      this.userId = params.id;
+    }
+  );
+
+
+this.userService.getById(this.userId).subscribe((res) => {
+   this.user = res;
+});
+
+if(this.user == null)
+{
+  //route to something went to wrong
+}
+
+if(this.user.isActive)
+{
+  //display message : user is registered already, please login <login button>
+}
+
     this.form = this.formBuilder.group({
       fullName:['',Validators.required],
       email:[{value:'aprilcox@newcube.com',disabled:true}],
