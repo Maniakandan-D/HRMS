@@ -10,6 +10,7 @@ import { User } from '../shared/user.model';
 
 import { DialogService } from '../shared/dialog.service';
 import { UserViewComponent } from '../user-view/user-view.component';
+import { AlertService } from '../shared/alert.service';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class UserTableComponent implements OnInit {
   constructor( private userService: UserService,
      public dialog:MatDialog,
      private dialogService:DialogService,
+     private toastrService:AlertService
      ) { }
 
 
@@ -37,7 +39,9 @@ export class UserTableComponent implements OnInit {
     this.getAlluser();
   }
 
- 
+  show(){
+    this.toastrService.showInfo("sdfghj")
+  }
   openDialog() {
     this.dialog.open(UserInviteComponent, {
       width:'30%'
