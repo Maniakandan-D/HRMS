@@ -1,3 +1,4 @@
+import { NgToastModule } from 'ng-angular-popup';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
@@ -35,7 +36,6 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -61,6 +61,8 @@ import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    NgToastModule
+
   ],
   declarations: [
     LayoutComponent,
@@ -70,6 +72,7 @@ import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.
     UserInviteComponent,
     UserTableComponent,
     UserViewComponent,
-    ConfirmDialogComponent]
+    ConfirmDialogComponent,
+  ]
 })
 export class UserModule { }

@@ -27,7 +27,8 @@ export class UserInviteComponent implements OnInit {
     private dialogRef:MatDialogRef<UserInviteComponent>,
     @Inject(MAT_DIALOG_DATA)
     public editData:any,
-    private dialogService:DialogService) { }
+    private dialogService:DialogService,
+  ) { }
 
   paste(event: ClipboardEvent): void {
        event.preventDefault();
@@ -37,7 +38,11 @@ export class UserInviteComponent implements OnInit {
             .forEach(value => {
               if(value.trim()){
                 
-
+                function uniqBySetWithSpread<T>(array: T[]): T[] {
+                  return [...new Set(array)];
+              }
+              console.log(uniqBySetWithSpread(this.emailList));
+              
                 //check duplication warning message 
 //if email exsit raise error and remove from list
 
@@ -153,7 +158,7 @@ this.emailList.forEach((email)=>{
         this.dialogRef.close('save');
       },
       error:()=>{
-        alert("Something went wrong");
+        alert("something went wrong");
       }
     })
   }
