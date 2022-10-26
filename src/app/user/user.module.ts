@@ -62,6 +62,7 @@ import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.
     MatToolbarModule,
     MatListModule,
     NgToastModule
+
   ],
   declarations: [
     LayoutComponent,
