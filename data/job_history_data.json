@@ -1,0 +1,13 @@
+{
+    "JobHistory": [
+        {
+            "id": "gdgWW234",
+            "position": "json-server",
+            "companyName": "typicode",
+            "address":  "some comment",
+            "NumberYears":2,
+            "period": "string",
+            "ctc": 343432
+        }
+    ]
+}
