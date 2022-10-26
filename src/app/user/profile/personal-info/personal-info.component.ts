@@ -17,13 +17,13 @@ export class PersonalInfoComponent implements OnInit {
   relationshipControl = new FormControl(null, Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   relationships: RelationshipType[] = [
-    { name: 'Father' },
-    { name: 'Mother' },
+    { name: 'Father'},
+    { name: 'Mother'},
     { name: 'Spouse' },
     { name: 'Brother' },
-    { name: 'Sister' },
-    { name: 'Son' },
-    { name: 'Daughter' },
+    { name: 'Sister'},
+    { name: 'Son'},
+    { name: 'Daughter'},
   ];
   date = new FormControl(new Date());
   relationship = new RelationshipInfo()

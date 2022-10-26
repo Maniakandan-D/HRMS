@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -21,11 +22,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     CoreModule,
     SharedModule,
     ToastrModule.forRoot({
-      timeOut: 15000, // 15 seconds
+      timeOut: 5000,
       closeButton: true,
       progressBar: true,
-    }),
-   
+      positionClass: 'toast-bottom-right',
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
