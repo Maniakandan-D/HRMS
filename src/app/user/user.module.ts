@@ -1,3 +1,4 @@
+import { NgToastModule } from 'ng-angular-popup';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
@@ -34,7 +35,6 @@ import { UserInviteComponent } from './user-invite/user-invite.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
-import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -61,7 +61,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    ToastrModule
+    NgToastModule
   ],
   declarations: [
     LayoutComponent,
@@ -71,6 +71,7 @@ import { ToastrModule } from 'ngx-toastr';
     UserInviteComponent,
     UserTableComponent,
     UserViewComponent,
-    ConfirmDialogComponent]
+    ConfirmDialogComponent,
+  ]
 })
 export class UserModule { }

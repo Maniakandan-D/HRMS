@@ -10,8 +10,6 @@ import { User } from '../shared/user.model';
 
 import { DialogService } from '../shared/dialog.service';
 import { UserViewComponent } from '../user-view/user-view.component';
-import { ToastrService } from 'ngx-toastr';
-
 
 
 @Component({
@@ -37,10 +35,9 @@ export class UserTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAlluser();
-   
   }
 
-  
+ 
   openDialog() {
     this.dialog.open(UserInviteComponent, {
       width:'30%'

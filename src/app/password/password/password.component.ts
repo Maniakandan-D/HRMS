@@ -44,15 +44,15 @@ this.userService.getById(id).subscribe((res) => {
 // }
  () =>  {
   if(this.user === undefined) {return}
-  else{
-    this.user.isActive;
+  // else{
+  //   this.user.isActive;
   if(this.user.isActive){
     return
   }else{
     // The rest of the code
   this.form = this.formBuilder.group({
     fullName:['',Validators.required],
-    email:[{value:'this.form.value',disabled:true}],
+    email:[{value:'',disabled:true}],
     password: ['',[
       Validators.required,
       Validators.pattern(
@@ -65,7 +65,7 @@ this.userService.getById(id).subscribe((res) => {
   }, {
     validator: PasswordValidation.MatchPassword
   });
-  }
+  
 } 
 
 }
