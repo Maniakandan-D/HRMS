@@ -13,7 +13,7 @@ export class PrimaryInfoComponent implements OnInit {
   guardianTypes: (string | GuardianType)[];
   GuardianType: GuardianType;
   basicInfoFormGroup: FormGroup;
-  aadharFile: File;
+  aadhaarFile: File;
   PANFile: File;
   PassportFile: File;
 
@@ -22,16 +22,15 @@ export class PrimaryInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.guardianTypes = Object.values(GuardianType).filter(value => typeof value === 'string');
-    
     this.basicInfoFormGroup = this._formBuilder.group({
       firstName: ['', [Validators.required]],
       middleName: [''],
       lastName: ['', [Validators.required]],
       profileImageFile: ['', [Validators.required]],
       dob: ['', [Validators.required]],
-      aadharName: ['', [Validators.required]],
-      aadharNumber: [''],
-      aadharFile:[''],
+      aadhaarName: ['', [Validators.required]],
+      aadhaarNumber: [''],
+      aadhaarFile:[''],
       panNumber: [''],
       panFile:[''],
       nationality:[''],
@@ -46,8 +45,8 @@ export class PrimaryInfoComponent implements OnInit {
     this.basicInfoFormGroup.patchValue(this.basicInfo);
   }
 
-  onSelectAadharFile(event: Event): void {
-    this.aadharFile = this.getInputFile(event);
+  onSelectAadhaarFile(event: Event): void {
+    this.aadhaarFile = this.getInputFile(event);
   }
 
   onSelectPANFile(event: Event): void {

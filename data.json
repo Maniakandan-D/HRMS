@@ -1,0 +1,45 @@
+{
+  "JobHistory": [
+    {
+      "id": 1,
+      "position": "software Development",
+      "companyName": "ABC pvt",
+      "address": "chennai",
+      "numberYears": "2",
+      "period": "2",
+      "ctc": "350000",
+      "isEdit": true
+    }
+  ],
+  "Educational": [
+    {
+      "id": 1,
+      "university": "Madras University",
+      "completionYear": "4",
+      "program": "full time",
+      "aggregate": "54%",
+      "grade": "c+",
+      "isEdit": true
+    }
+  ],
+  "Nominee": [
+    {
+      "id": 1,
+      "relationship": "Father",
+      "nomineeName": "ram",
+      "dob": "02-08-1987",
+      "gender": "male",
+      "nomineeShare": "45%"
+    }
+  ],
+  "Dependent": [
+    {
+      "id": 1,
+      "dependentName": "Father",
+      "name": "michal",
+      "dob": "2022-10-23T18:30:00.000Z",
+      "gender": "male",
+      "isEdit": true
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, PatternValidator } from '@angular/forms';
 import { Communication } from 'src/app/employees/shared/employee.model';
 import { CorrespondenceAddress } from 'src/app/user/shared/user-profile.model';
 import { UserProfileService } from 'src/app/user/shared/user-profile.service';
@@ -37,8 +37,7 @@ export class CorrespondenceInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.correspondenceForm = this.fb.group({
-      'email': new FormControl('', [Validators.required, Validators.email,
-      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      'email': new FormControl('', Validators.required, PatternValidator['^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$']),
       'mobilePhone':new FormControl('', Validators.required),
       'homePhone': new FormControl(''),
       'street':new FormControl('', Validators.required),

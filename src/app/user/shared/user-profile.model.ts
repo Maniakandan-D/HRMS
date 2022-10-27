@@ -18,19 +18,19 @@ export class UserBasicInfo extends IUserProfile {
     firstName: string;
     middleName: string;
     lastName: string;
-    profileImageFile: File;
-    profileImageUrl: string;
+    profilePictureFile : File;
+    profilePictureUrl : string;
     dob: Date;
-    aadharName: string;
-    aadharFile: File;
-    aadharNumber: string;
-    aadharAttachmentUrl: string;
+    aadhaarName: string;
+    aadhaarFile: File;
+    aadhaarNumber: string;
+    aadhaarAttachmentUrl: string;
     panNumber: string;
     panFile: File;
     panAttachmentUrl: string;
     nationality: string;
     passportNumber: string;
-    validVisaInformation: string;
+    validVisaInformation : string;
     guardianType: string;
     guardianName: string;
 }
