@@ -1,0 +1,69 @@
+{
+  "JobHistory": [
+    {
+      "id": 1,
+      "position": "json-server",
+      "companyName": "typicode",
+      "address": "213,fghfj",
+      "NumberYears": 2,
+      "period": 4,
+      "ctc": 564365
+    }
+  ],
+  "Educational": [
+    {
+      "id": 1,
+      "university": "some comment",
+      "completionYear": 1,
+      "program": "full time",
+      "aggregate": "54%",
+      "grade": "c+"
+    }
+  ],
+  "Nominee": [
+    {
+      "id": 1,
+      "relationship": "Father",
+      "nomineeName": "ram",
+      "dob": "02-08-1987",
+      "gender": "male",
+      "nomineeShare": "45%"
+    },
+    {
+      "id": 2,
+      "relationship": "",
+      "nomineeName": "",
+      "dob": "",
+      "gender": "",
+      "nomineeShare": "",
+      "isEdit": true
+    },
+    {
+      "id": 3,
+      "relationship": "",
+      "nomineeName": "",
+      "dob": "",
+      "gender": "",
+      "nomineeShare": "",
+      "isEdit": true
+    },
+    {
+      "id": 4,
+      "relationship": "",
+      "nomineeName": "",
+      "dob": "",
+      "gender": "",
+      "nomineeShare": "",
+      "isEdit": true
+    }
+  ],
+  "Dependent": [
+    {
+      "id": 1,
+      "dependentName": "Father",
+      "name": "michal",
+      "dob": "02-08-1987",
+      "gender": "male"
+    }
+  ]
+}
