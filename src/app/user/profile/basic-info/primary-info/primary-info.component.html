@@ -22,7 +22,7 @@
       </div>
   </div>
   <div class="content pt10" fxLayout="row" fxLayout.xs="column"  fxFlexFill>
-    <div class="mb10"fxFlex="20">
+    <div class="mb10" fxFlex="20">
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput placeholder="As per Aadhar" formControlName="aadhaarName" name="aadhaarName" [(ngModel)]="basicInfo.aadhaarName" [class.is-invalid]="basic.submitted && basicInfoFormGroup.get('aadhaarName')?.invalid">

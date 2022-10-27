@@ -43,35 +43,38 @@ export const JobHistoryColumns = [
     {
         key: 'position',
         type: 'text',
-        label: 'First Name',
+        label: 'Position',
         required: true,
     },
     {
         key: 'companyName',
         type: 'text',
-        label: 'Last Name',
+        label: 'Name of the Company',
+        required: true,
     },
     {
         key: 'address',
-        type: 'email',
-        label: 'Email',
+        type: 'text',
+        label: 'Address',
         required: true,
-        pattern: '.+@.+',
     },
     {
         key: 'numberYears',
         type: 'text',
-        label: 'Date of Birth',
+        label: 'No. of years',
+        required: true,
     },
     {
         key: 'period',
         type: 'text',
-        label: 'Date of Birth',
+        label: 'Period',
+        required: true,
     },
     {
         key: 'ctc',
         type: 'text',
-        label: 'Date of Birth',
+        label: 'CTC',
+        required: true,
     },
     {
         key: 'isEdit',
@@ -84,30 +87,30 @@ export const EducationalColumns = [
     {
         key: 'university',
         type: 'text',
-        label: 'First Name',
+        label: 'University / College / Institution / School',
         required: true,
     },
     {
         key: 'completionYear',
         type: 'text',
-        label: 'Last Name',
+        label: 'Year of Completion',
+        required: true,
     },
     {
         key: 'program',
         type: 'text',
-        label: 'Email',
+        label: 'Program',
         required: true,
-        pattern: '.+@.+',
     },
     {
         key: 'aggregate',
         type: 'text',
-        label: 'Date of Birth',
+        label: 'Aggregate %',
     },
     {
         key: 'grade',
         type: 'text',
-        label: 'Date of Birth',
+        label: 'Grade',
     },
     {
         key: 'isEdit',
@@ -118,27 +121,30 @@ export const EducationalColumns = [
 
 export const NomineeColumns = [
     {
-        key: 'firstName',
+        key: 'relationship',
         type: 'text',
-        label: 'First Name',
+        label: 'Relationship',
         required: true,
     },
     {
-        key: 'lastName',
+        key: 'nomineeName',
         type: 'text',
-        label: 'Last Name',
+        label: 'Nominee Name',
     },
     {
-        key: 'email',
-        type: 'email',
-        label: 'Email',
-        required: true,
-        pattern: '.+@.+',
-    },
-    {
-        key: 'birthDate',
+        key: 'dob',
         type: 'date',
         label: 'Date of Birth',
+    },
+    {
+        key: 'gender',
+        type: 'text',
+        label: 'Gender',
+    },
+    {
+        key: 'nomineeShare',
+        type: 'text',
+        label: 'Nominee Share %',
     },
     {
         key: 'isEdit',
@@ -149,27 +155,25 @@ export const NomineeColumns = [
 
 export const DependentColumns = [
     {
-        key: 'firstName',
+        key: 'dependentName',
         type: 'text',
-        label: 'First Name',
+        label: 'Dependent',
         required: true,
     },
     {
-        key: 'lastName',
+        key: 'name',
         type: 'text',
-        label: 'Last Name',
+        label: 'Name',
     },
     {
-        key: 'email',
-        type: 'email',
-        label: 'Email',
-        required: true,
-        pattern: '.+@.+',
-    },
-    {
-        key: 'birthDate',
+        key: 'dob',
         type: 'date',
         label: 'Date of Birth',
+    },
+    {
+        key: 'gender',
+        type: 'text',
+        label: 'Gender',
     },
     {
         key: 'isEdit',

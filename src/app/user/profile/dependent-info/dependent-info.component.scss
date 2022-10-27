@@ -24,25 +24,13 @@ p {
     justify-content: space-between;
   }
   
-  .button-add-row {
-    background: #1b9e1b;
-    color: #ffffff;
-  }
-  
-  .button-remove-rows {
-    background: red;
-    color: #ffffff;
-    margin-right: 5px;
-  }
-  
-  .button-remove {
-    color: red;
-  }
-  
   ::ng-deep .mat-form-field-infix {
     width: 100% !important;
   }
   
   .form-input {
     padding-right: 5px;
+  }
+  .btn-space {
+    margin-right: 8px;
   }
