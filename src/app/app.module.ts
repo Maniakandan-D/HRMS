@@ -21,6 +21,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     CoreModule,
     SharedModule,
+    ToastrModule.forRoot({
+      timeOut: 15000, // 15 seconds
+      closeButton: true,
+      progressBar: true,
+    }),
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

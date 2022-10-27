@@ -42,7 +42,10 @@ export class UserTableComponent implements OnInit {
   }
 
   show(){
-    this.toastrService.showInfo("sdfghj")
+    this.toastrService.showInfo("clicked successfully","Show info")
+  }
+  showSuccess(){
+    this.toastrService.showSuccess("clicked successfully","success");
   }
   openDialog() {
     this.dialog.open(UserInviteComponent, {
