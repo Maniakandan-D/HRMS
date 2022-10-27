@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EmergencyContactInfo } from '../../shared/emergency-contact.model';
+import { EmergencyContactInfo } from '../../shared/table.model'; 
 
 @Component({
   selector: 'emergency-contact-info',

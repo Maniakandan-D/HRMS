@@ -2,7 +2,6 @@
 <mat-vertical-stepper [linear]="isLinear"  #stepper [selectedIndex]="0" (selectionChange)="stepChange($event)"> 
   <mat-step [stepControl]="basicForm" errorMessage="Basic Details is required.">
     <ng-template matStepLabel>Basic Details</ng-template>
-    
     <form *ngIf="employee" [formGroup]="basicForm" (ngSubmit)="basicForm.valid && basicFormSubmit()">
       <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=5% fxLayoutAlign="space-around stretch">
         <mat-card fxFlex.gt-xs=15%>

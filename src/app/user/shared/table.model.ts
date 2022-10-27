@@ -1,3 +1,60 @@
+export class BasicInfo {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    profilePictureFile : File;
+    profilePictureUrl : string;
+    dob: Date;
+    aadhaarName: string;
+    aadhaarFile: File;
+    aadhaarNumber: string;
+    aadhaarAttachmentUrl: string;
+    panNumber: string;
+    panFile: File;
+    panAttachmentUrl: string;
+    nationality: string;
+    passportNumber: string;
+    validVisaInformation : string;
+    guardianType: string;
+    guardianName: string;
+}
+
+export class CorrespondenceAddress{
+    userAddressId: string;
+    homePhone: string;
+    mobilePhone: string;
+    email: string;
+    street: string;
+    apartment: string;
+    city: string;
+    state: string;
+    pincode: string;
+}
+
+export class PermanentAddress{
+    userAddressId: string;
+    street: string;
+    apartment: string;
+    city: string;
+    state: string;
+    pincode: string;
+}
+
+export class PersonalInfo {
+    id: string;
+    name: string;
+    relationshipType: Selection;
+    dob: Date;
+}
+
+
+export class ReferenceInfo {
+    id: string;
+    name: string;
+    mobileNumber:string;
+    relationshipType: Selection;
+}
+
 export class JobHistory {
     id: string;
     position: string;
@@ -38,6 +95,30 @@ export class Dependent {
     isEdit: boolean;
 }
 
+export class BankInfo {
+    id: string;
+    bankName: string;
+    accountNumber: number;
+    ifscCode: string;
+    nameInBank:string;
+}
+
+export class EmergencyContactInfo {
+    id: string;
+    physician: string;
+    phoneNumber: number;
+    bloodGroup: string;
+    firstName: string;
+    lastName: string;
+    relationship: string;
+    street: string;
+    city: string;
+    state: string;
+    pincode: string;
+    homePhone: number;
+    workPhone: number;
+    mobilePhone: number;
+}
 
 export const JobHistoryColumns = [
     {

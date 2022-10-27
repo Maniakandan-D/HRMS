@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ReferenceInfo } from '../../shared/reference.model';
+import { ReferenceInfo }from 'src/app/user/shared/table.model';
 
 
 interface RelationshipType {

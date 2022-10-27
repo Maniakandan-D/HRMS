@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserProfileService } from '../../../shared/user-profile.service';
-import { GuardianType, UserBasicInfo, UserProfile } from '../../../shared/user-profile.model'; 
+import { GuardianType } from '../../../shared/user-profile.model'; 
+import { BasicInfo } from 'src/app/user/shared/table.model';
 
 @Component({
   selector: 'primary-info',
   templateUrl: './primary-info.component.html',
 })
 export class PrimaryInfoComponent implements OnInit {
-  basicInfo: UserBasicInfo = new UserBasicInfo();
+  
+  basicInfo: BasicInfo = new BasicInfo();
   //@Input()
   guardianTypes: (string | GuardianType)[];
   GuardianType: GuardianType;
@@ -39,7 +41,6 @@ export class PrimaryInfoComponent implements OnInit {
       guardianType: ['', [Validators.required]],
       guardianName: ['', [Validators.required]],
     }, { updateOn: 'submit' });
-
 
     //basicinfo read as input from component
     this.basicInfoFormGroup.patchValue(this.basicInfo);

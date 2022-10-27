@@ -1,19 +1,26 @@
 
-  <mat-stepper orientation="vertical" [linear]="false" #stepper>
+  <mat-stepper orientation="vertical" [linear]=false #stepper>
     <mat-step [stepControl]="basicInfoFormGroup">
         <ng-template matStepLabel>Basic Info</ng-template>
-        <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=5% fxLayoutAlign="space-around stretch">
-          <mat-card fxFlex.gt-xs=15%>
-            <mat-card-content>
-              <image-info></image-info>
+        <form [formGroup]="basicInfoFormGroup" (ngSubmit)="onSubmit()"> 
+          <div class="mb20" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap=5% fxLayoutAlign="space-around stretch">
+            <mat-card fxFlex.gt-xs=15%>
+              <mat-card-content>
+                <image-info></image-info>
+                </mat-card-content>
+            </mat-card>
+            <mat-card fxFlex.gt-xs=80%>
+              <mat-card-content>
+                <primary-info ></primary-info>
               </mat-card-content>
-          </mat-card>
-          <mat-card fxFlex.gt-xs=80%>
-            <mat-card-content>
-              <primary-info></primary-info>
-            </mat-card-content>
-          </mat-card>
-        </div>
+            </mat-card>
+          </div>
+          <div align="end">
+            <button mat-raised-button color="warn" class="btn-space" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" class="btn-space" type="submit" matStepperNext>Save & Continue</button>
+          </div>
+        </form>
+        
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">

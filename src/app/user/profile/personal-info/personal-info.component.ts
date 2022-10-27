@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { RelationshipInfo } from '../../shared/relationship.model';
+import { PersonalInfo } from 'src/app/user/shared/table.model';
 
 interface RelationshipType {
   // id:string;
@@ -26,17 +26,17 @@ export class PersonalInfoComponent implements OnInit {
     { name: 'Daughter'},
   ];
   date = new FormControl(new Date());
-  relationship = new RelationshipInfo()
+  relationship = new PersonalInfo()
   dataarray = [];
   constructor() { }
 
   ngOnInit() {
-    this.relationship = new RelationshipInfo()
+    this.relationship = new PersonalInfo()
     this.dataarray.push(this.relationship);
   }
 
   addForm() {
-    this.relationship = new RelationshipInfo()
+    this.relationship = new PersonalInfo()
     this.dataarray.push(this.relationship);
   }
 

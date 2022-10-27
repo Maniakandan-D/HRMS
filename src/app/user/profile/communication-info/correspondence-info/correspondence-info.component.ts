@@ -8,7 +8,11 @@ import { UserProfileService } from 'src/app/user/shared/user-profile.service';
   selector: 'correspondence-info',
   templateUrl: './correspondence-info.component.html',
   styleUrls: ['./correspondence-info.component.scss']
+  
 })
+
+
+
 export class CorrespondenceInfoComponent implements OnInit {
 
   // correspondenceInfo: CorrespondenceAddress = new CorrespondenceAddress();

@@ -1,4 +1,50 @@
 {
+  "userBasicInfo": [
+    {
+      "userId": "34e2502f-dc23-47ab-aa38-9619c604bdcb",
+      "firstName": "Gracie",
+      "middleName": "",
+      "lastName": "",
+      "profileImageFile": "",
+      "profileImageUrl": "",
+      "dob": "03-01-1977",
+      "aadharName": "Ayala jhon cena",
+      "aadharNumber": 987656432345,
+      "aadharFile": "",
+      "aadharAttachmentUrl": "",
+      "panNumber": "GGMS1313A",
+      "panFile": "",
+      "panAttachmentUrl": "",
+      "nationality": "Indian",
+      "passportNumber": 3445668880,
+      "validVisaInformation": "gjqtyu567576",
+      "guardianType": "Father",
+      "guardianName": "Michal"
+    }
+  ],
+  "CorrespondenceAddress": [
+    {
+      "userAddressId": "4e479c6c-84f7-4ca-sssss",
+      "homePhone": "",
+      "mobilePhone": "",
+      "email": "",
+      "street": "",
+      "apartment": "",
+      "city": "",
+      "state": "",
+      "pinCode": ""
+    }
+  ],
+  "PermanentAddress": [
+    {
+      "userAddressId": "4e479c6c-84f7-4ca-sssss",
+      "street": "",
+      "apartment": "",
+      "city": "",
+      "state": "",
+      "pincode": ""
+    }
+  ],
   "JobHistory": [
     {
       "id": 1,
@@ -36,10 +82,44 @@
     {
       "id": 1,
       "dependentName": "Father",
-      "name": "michal",
+      "name": "Ram",
       "dob": "2022-10-23T18:30:00.000Z",
       "gender": "male",
       "isEdit": true
+    }
+  ],
+  "EmergencyContactInfo": [
+    {
+      " id": "",
+      "physician": "",
+      "phoneNumber": "",
+      "bloodGroup": "",
+      "firstName": "",
+      "lastName": "",
+      "relationship": "",
+      "street": "",
+      "city": "",
+      "state": "",
+      "pincode": "",
+      "homePhone": "",
+      "workPhone": "",
+      "mobilePhone": ""
+    }
+  ],
+  "ReferenceInfo": [
+    {
+      "id": "",
+      "name": "",
+      "mobileNumber": "",
+      "relationshipType": ""
+    }
+  ],
+  "PersonalInfo": [
+    {
+      "id": "",
+      "name": "",
+      "relationshipType": "",
+      "dob": ""
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BankInfo } from '../../shared/bank.model';
+import { BankInfo } from '../../shared/table.model';
 
 @Component({
   selector: 'bank-info',
