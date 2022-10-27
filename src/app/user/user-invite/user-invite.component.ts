@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogService } from '../shared/dialog.service';
 import { UserService } from '../shared/user.service';
 import { InviteUser, User } from '../shared/user.model';
+import { AlertService } from '../shared/alert.service';
 
 @Component({
   selector: 'app-user-invite',
@@ -28,6 +29,7 @@ export class UserInviteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public editData:any,
     private dialogService:DialogService,
+    private notifyService:AlertService
   ) { }
 
   paste(event: ClipboardEvent): void {
@@ -158,7 +160,7 @@ this.emailList.forEach((email)=>{
         this.dialogRef.close('save');
       },
       error:()=>{
-        alert("something went wrong");
+        this.notifyService.showError("Something went wrong","update error");
       }
     })
   }

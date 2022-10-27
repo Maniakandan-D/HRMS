@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-declare let toastr:any
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +11,20 @@ export class AlertService {
 
   }
 
-  showSuccess(message: string): void{
-    this.toastr.success(message)
+  showSuccess(message: string,title: string): void{
+    this.toastr.success(message,title);
   }
  
-  showError(message: string): void{
-    this.toastr.error(message)
+  showError(message: string,title: string): void{
+    this.toastr.error(message,title);
   }
  
-  showInfo(message: string): void{
-    this.toastr.info(message)
+  showInfo(message: string,title: string): void{
+    this.toastr.info(message,title);
   }
  
-  showWarning(message: string): void{
-    this.toastr.warning(message)
+  showWarning(message: string,title: string): void{
+    this.toastr.warning(message,title);
   }
  
   

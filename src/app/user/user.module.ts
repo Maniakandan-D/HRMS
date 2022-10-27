@@ -1,4 +1,4 @@
-import { NgToastModule } from 'ng-angular-popup';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
@@ -61,7 +61,6 @@ import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    NgToastModule
   ],
   declarations: [
     LayoutComponent,

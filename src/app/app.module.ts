@@ -25,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 15000, // 15 seconds
       closeButton: true,
       progressBar: true,
+      positionClass: 'toast-bottom-right',
     }),
    
   ],
