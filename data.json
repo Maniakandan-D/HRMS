@@ -2,22 +2,24 @@
   "JobHistory": [
     {
       "id": 1,
-      "position": "json-server",
-      "companyName": "typicode",
-      "address": "213,fghfj",
-      "NumberYears": 2,
-      "period": 4,
-      "ctc": 564365
+      "position": "software Development",
+      "companyName": "ABC pvt",
+      "address": "chennai",
+      "numberYears": "2",
+      "period": "2",
+      "ctc": "350000",
+      "isEdit": true
     }
   ],
   "Educational": [
     {
       "id": 1,
-      "university": "some comment",
-      "completionYear": 1,
+      "university": "Madras University",
+      "completionYear": "4",
       "program": "full time",
       "aggregate": "54%",
-      "grade": "c+"
+      "grade": "c+",
+      "isEdit": true
     }
   ],
   "Nominee": [
@@ -28,33 +30,6 @@
       "dob": "02-08-1987",
       "gender": "male",
       "nomineeShare": "45%"
-    },
-    {
-      "id": 2,
-      "relationship": "",
-      "nomineeName": "",
-      "dob": "",
-      "gender": "",
-      "nomineeShare": "",
-      "isEdit": true
-    },
-    {
-      "id": 3,
-      "relationship": "",
-      "nomineeName": "",
-      "dob": "",
-      "gender": "",
-      "nomineeShare": "",
-      "isEdit": true
-    },
-    {
-      "id": 4,
-      "relationship": "",
-      "nomineeName": "",
-      "dob": "",
-      "gender": "",
-      "nomineeShare": "",
-      "isEdit": true
     }
   ],
   "Dependent": [
@@ -62,8 +37,9 @@
       "id": 1,
       "dependentName": "Father",
       "name": "michal",
-      "dob": "02-08-1987",
-      "gender": "male"
+      "dob": "2022-10-23T18:30:00.000Z",
+      "gender": "male",
+      "isEdit": true
     }
   ]
 }

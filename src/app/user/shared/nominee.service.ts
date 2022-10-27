@@ -21,6 +21,7 @@ export class NomineeService {
     add(nominee: Nominee): Observable<Nominee> {
         return this.http.post<Nominee>(`${this.apiEndpoint}/Nominee`, nominee);
       }
+      
     delete(id: string): Observable<boolean> {
         return this.http.delete<boolean>(`${this.apiEndpoint}/Nominee/${id}`).pipe(map((res: any) => {
             return res
