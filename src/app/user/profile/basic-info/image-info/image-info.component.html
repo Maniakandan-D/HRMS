@@ -1,2 +1,90 @@
-<img height="100px" width="100px" [src]="_d.bypassSecurityTrustUrl(imgsrc)">
-<input mat-input type="file" (change)="fileChange($event)">
+<!-- <img height="100px" width="100px" [src]="_d.bypassSecurityTrustUrl(imgsrc)">
+<input mat-input type="file" accept="image/*" (change)="fileChange($event)"> -->
+
+<!-- <div style="text-align:center">
+	<div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+	<div><img [src]="url" *ngIf="url"></div>
+	<p>
+		<input  accept="image/*" type="file" (change)="selectFile($event)">
+	</p>
+</div> -->
+
+<!-- <h1 style="text-align: center">Resumable File Upload</h1>
+<mat-card style="width: 60vw; margin: auto">
+    <mat-card-header>
+        <mat-card-title>Upload File</mat-card-title>
+    </mat-card-header>
+    <button mat-raised-button (click)="fileSelect.click()">Select File</button><br /><br />
+    <h4>Selected File: {{ name }}</h4>
+    <input type="file" hidden #fileSelect name="largeFile" (change)="onFileSelect($event)" />
+
+    <button mat-raised-button (click)="resumableUpload()" color="primary">
+        Upload
+    </button>
+    <br /><br />
+    <mat-progress-spinner *ngIf="uploadPercent > 0" class="example-margin" [color]="color" [mode]="mode"
+        [value]="uploadPercent">
+    </mat-progress-spinner>
+    <mat-card-actions>
+        <button mat-raised-button (click)="goToLink('https://www.linkedin.com/in/hitensharma15/')">
+            <img src="https://img.icons8.com/material/24/000000/linkedin.png" />LinkedIn
+        </button>
+        <button mat-raised-button (click)="goToLink('https://github.com/hitensharma')">
+            <img src="https://img.icons8.com/material/24/000000/github.png" />GitHub
+        </button>
+        <button mat-raised-button (click)="goToLink('https://codepen.io/hitensharma')">
+            <img src="https://img.icons8.com/material/24/000000/codepen.png" />Codepen
+        </button>
+        <button mat-raised-button (click)="goToLink('https://medium.com/@hitensharma1515')">
+            <img src="https://img.icons8.com/material/24/000000/medium.png" />Medium
+        </button>
+    </mat-card-actions>
+</mat-card> -->
+
+
+
+<div *ngFor="let progressInfo of progressInfos">
+    <span>{{ progressInfo.fileName }}</span>
+    <mat-toolbar class="progress-bar">
+        <mat-progress-bar color="accent" [value]="progressInfo.value"></mat-progress-bar>
+        <span class="progress">{{ progressInfo.value }}%</span>
+    </mat-toolbar>
+</div>
+
+<mat-form-field>
+    <div>
+        <mat-toolbar>
+            <input matInput [value]="selectedFileNames.length ? selectedFileNames : 'Select Images'" />
+
+            <button mat-flat-button color="primary" [disabled]="!selectedFiles" (click)="uploadFiles()">
+                Upload
+            </button>
+        </mat-toolbar>
+
+        <input type="file" id="fileInput" name="fileInput" accept="image/*" (change)="selectFiles($event)" />
+    </div>
+</mat-form-field>
+
+<div>
+    <img *ngFor='let preview of previews' [src]="preview" class="preview">
+</div>
+
+<div *ngIf="message.length" class="message">
+    <ul *ngFor="let msg of message; let i = index">
+        <li>{{ msg }}</li>
+    </ul>
+</div>
+
+<mat-card class="list-card">
+    <mat-card-header>
+        <mat-card-title>view</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let image of imageInfos | async" class="list-item">
+                <p matLine><a href="{{ image.url }}">{{ image.name }}</a></p>
+                <img src="{{ image.url }}" alt="{{ image.name }}" height="50px" />
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

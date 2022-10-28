@@ -1,0 +1,34 @@
+<!-- <div class="jumbotron text-center">
+	<h1 class="display-5">
+		Angular 7 Image Upload with Reactive Forms
+	</h1>
+</div> -->
+
+<div class="container">
+	<div class="row custom-wrapper">
+		<div class="col-md-12">
+
+			<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+				<div class="group-gap">
+
+					
+					<div class="avatar-upload">
+						<div class="avatar-edit">
+							<input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+              </div>
+            </div>
+          </div>
+        </div>
+
+          
+          <button type="submit" mat-raised-button color="primary" (click)="fileInput.click()">Upload Image</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>

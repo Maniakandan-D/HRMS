@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {  map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Dependent } from './table.model';
 
@@ -11,6 +11,7 @@ import { Dependent } from './table.model';
 })
 
 export class DependentService {
+
     apiEndpoint: string = environment.API;
 
     constructor(private http: HttpClient) { }

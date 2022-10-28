@@ -28,7 +28,6 @@ import { ToastrModule } from 'ngx-toastr';
       progressBar: true,
       positionClass:'toast-bottom-right'
     }),
-   
   ],
   providers: [],
   bootstrap: [AppComponent]

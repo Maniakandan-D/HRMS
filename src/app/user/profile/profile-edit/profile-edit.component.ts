@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { BasicInfo } from '../../shared/table.model';
+import { UserProfileService } from '../../shared/user-profile.service';
 
 
 @Component({
@@ -8,7 +10,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./profile-edit.component.scss']
 })
 export class ProfileEditComponent implements OnInit {
- 
+  basicInfo: BasicInfo;
   basicInfoFormGroup: FormGroup;
 
   secondFormGroup = this._formBuilder.group({
@@ -19,9 +21,11 @@ export class ProfileEditComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+   
   }
 
-  onSubmit(){
-    
+
+  onSubmit() {
+
   }
 }

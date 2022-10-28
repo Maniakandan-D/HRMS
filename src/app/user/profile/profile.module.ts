@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -60,6 +60,10 @@ import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { ImageInfoComponent } from './basic-info/image-info/image-info.component';
 import { CorrespondenceInfoComponent } from './communication-info/correspondence-info/correspondence-info.component';
 import { PermanentInfoComponent } from './communication-info/permanent-info/permanent-info.component';
+import { NameGenderComponent } from './profile-view/name-gender/name-gender.component';
+import { ImageUploadComponent } from './basic-info/image-upload/image-upload.component';
+import { ImageService } from './basic-info/image-upload/image.service';
+
 
 @NgModule({
   declarations: [
@@ -77,7 +81,9 @@ import { PermanentInfoComponent } from './communication-info/permanent-info/perm
     ProfileViewComponent,
     ImageInfoComponent,
     CorrespondenceInfoComponent,
-    PermanentInfoComponent
+    PermanentInfoComponent,
+    NameGenderComponent,
+    ImageUploadComponent
   ],
   imports: [
     CommonModule,
@@ -124,7 +130,11 @@ import { PermanentInfoComponent } from './communication-info/permanent-info/perm
     DragDropModule,
     ScrollingModule,
     MatTreeModule,
-    MatOptionModule,
-  ]
+    MatOptionModule
+  ],
+  providers: [
+    ImageService,
+    FormBuilder
+  ],
 })
 export class ProfileModule { }

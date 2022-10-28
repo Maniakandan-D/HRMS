@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { UserProfile  } from './user-profile.model';
 import { BasicInfo } from './table.model';
 import { CorrespondenceAddress } from './user-profile.model';
 import { PermanentAddress } from './user-profile.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class UserProfileService {
   }
 
   saveUserBasicInfo(basicInfo: BasicInfo): Observable<BasicInfo> {
-    return this.http.post<BasicInfo>(`${this.apiEndpoint}`, basicInfo);
+    return this.http.post<BasicInfo>(`${this.apiEndpoint}/BasicInfo`, basicInfo);
   }
 
   saveUserCorrespondenceAddressInfo(contactInfo: CorrespondenceAddress): Observable<CorrespondenceAddress> {
@@ -38,4 +38,6 @@ export class UserProfileService {
   saveUserPermanentAddressInfo(contactInfo: PermanentAddress): Observable<PermanentAddress> {
     return this.http.post<PermanentAddress>(`${this.apiEndpoint}`, contactInfo);
   }
+
+
 }
